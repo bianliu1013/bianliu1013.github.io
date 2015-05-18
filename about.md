@@ -4,12 +4,12 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+A blog from Peter!
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+Wish everyday is a happy day, for you, for me.
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[bianliu1013@163.com](mailto:bianliu1013@163.com)
