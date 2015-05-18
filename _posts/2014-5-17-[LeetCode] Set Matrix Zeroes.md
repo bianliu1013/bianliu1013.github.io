@@ -1,4 +1,7 @@
-##Set Matrix Zeroes
+---
+layout: post
+title: [leetcode] - Set Matrix Zeroes!
+---
 
  Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.
 click to show.
@@ -15,7 +18,7 @@ Could you devise a constant space solution?
 
 ### code
 
-```cplus
+```c++
 
 class Solution {
   public:
