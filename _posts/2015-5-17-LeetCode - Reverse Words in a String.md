@@ -1,6 +1,8 @@
 ---
 layout: post
-title: [leetcode] - Reverse Words in a String!
+title: leetcode - Reverse Words in a String!
+date:   2015-05-17 11:23:32
+categories: leetcode c++
 ---
 
 Given an input string, reverse the string word by word.

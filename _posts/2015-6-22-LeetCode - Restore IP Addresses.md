@@ -1,6 +1,8 @@
 ---
 layout: post
-title: [leetcode] -  Restore IP Addresses!
+title: leetcode -  Restore IP Addresses!
+date:   2015-06-22 11:23:32
+categories: leetcode c++
 ---
 
 

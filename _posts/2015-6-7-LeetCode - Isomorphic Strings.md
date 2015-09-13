@@ -1,6 +1,8 @@
 ---
 layout: post
-title: [leetcode] -  Isomorphic Strings!
+title: leetcode -  Isomorphic Strings!
+date:   2015-06-07 11:23:32
+categories: leetcode c++
 ---
 
 

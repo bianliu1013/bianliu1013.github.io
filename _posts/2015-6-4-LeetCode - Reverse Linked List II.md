@@ -1,6 +1,8 @@
 ---
 layout: post
-title: [leetcode] -  Reverse a linked list!
+title: leetcode -  Reverse a linked list!
+date:   2015-06-04 11:23:32
+categories: leetcode c++
 ---
 
 

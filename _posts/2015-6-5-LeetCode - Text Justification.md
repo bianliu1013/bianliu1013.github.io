@@ -1,6 +1,8 @@
 ---
 layout: post
-title: [leetcode] -  Text Justification!
+title: leetcode -  Text Justification!
+date:   2015-06-05 11:23:32
+categories: leetcode c++
 ---
 
 

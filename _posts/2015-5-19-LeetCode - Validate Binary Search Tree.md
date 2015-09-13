@@ -1,6 +1,8 @@
 ---
 layout: post
-title: [leetcode] - Validate Binary Search Tree!
+title: leetcode - Validate Binary Search Tree!
+date:   2015-05-19 11:23:32
+categories: leetcode c++
 ---
 
  Given a binary tree, determine if it is a valid binary search tree (BST).

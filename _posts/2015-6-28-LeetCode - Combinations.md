@@ -1,6 +1,8 @@
 ---
 layout: post
-title: [leetcode] -  Combinations!
+title: leetcode -  Combinations!
+date:   2015-06-28 11:23:32
+categories: leetcode c++
 ---
 
 

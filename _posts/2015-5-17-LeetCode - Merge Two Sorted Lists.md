@@ -1,6 +1,8 @@
 ---
 layout: post
-title: [leetcode] - Merge Two Sorted Lists!
+title: leetcode - Merge Two Sorted Lists!
+date:   2015-05-17 11:23:32
+categories: leetcode c++
 ---
 
  Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.

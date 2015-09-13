@@ -1,6 +1,8 @@
 ---
 layout: post
-title: [leetcode] - Word Break!
+title: leetcode - Word Break!
+date:   2015-06-03 11:23:32
+categories: leetcode c++
 ---
 
  Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.

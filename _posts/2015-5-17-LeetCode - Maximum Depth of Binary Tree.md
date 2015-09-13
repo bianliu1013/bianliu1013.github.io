@@ -1,6 +1,8 @@
 ---
 layout: post
-title: [leetcode] - Maximum Depth of Binary Tree!
+title: leetcode - Maximum Depth of Binary Tree!
+date:   2015-05-17 11:23:32
+categories: leetcode c++
 ---
 
 Given a binary tree, find its maximum depth.

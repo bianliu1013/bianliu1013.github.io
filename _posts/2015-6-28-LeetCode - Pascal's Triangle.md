@@ -1,6 +1,8 @@
 ---
 layout: post
-title: [leetcode] -  Pascal's Triangle!
+title: leetcode -  Pascal's Triangle!
+date:   2015-06-28 11:23:32
+categories: leetcode c++
 ---
 
 

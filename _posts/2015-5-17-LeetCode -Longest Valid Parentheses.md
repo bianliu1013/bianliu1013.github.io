@@ -1,6 +1,8 @@
 ---
 layout: post
-title: [leetcode] - Longest Valid Parentheses!
+title: leetcode - Longest Valid Parentheses!
+date:   2015-05-17 11:23:32
+categories: leetcode c++
 ---
 
 Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
