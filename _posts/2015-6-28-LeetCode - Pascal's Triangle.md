@@ -28,10 +28,7 @@ Return
 
 
 ### code:
-
-``` c
-
-
+<pre><code>
 class Solution {
   public:
     vector<vector<int>> generate(int numRows) {
@@ -60,7 +57,4 @@ class Solution {
         return a;
     }
 };
-
-
-
-```
+</code></pre>
