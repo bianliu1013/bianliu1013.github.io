@@ -1,6 +1,6 @@
 ---
 layout: post
-title: all things learned from UVC
+title: all things learned from UVC2
 date:  2014-08-01 11:23:32
 categories: uvc c++
 ---
