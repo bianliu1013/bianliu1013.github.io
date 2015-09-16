@@ -7,7 +7,9 @@ categories: boost c++
 
 
 在重写驱动时候，发现程序莫名其妙的copy占用率奇高，一步步的调试，发现是一个线程的在不停的空转，最后定位到
-<pre><code>
+
+```C
+
 boost::mutex::scoped_lock lock(mutex);
 boost::system_time timeout = boost::get_system_time() + boost::posix_time::seconds(1);
 if(condition.timed_wait(lock, timeout)
@@ -18,9 +20,11 @@ else
 {
     //log
 }
-</code></pre>
+```
 改为以下用法，问题解决。
-<pre><code>
+
+```C
+
 boost::mutex::scoped_lock lock(mutex);
 //boost::system_time timeout = boost::get_system_time() + boost::posix_time::seconds(1);
 if(condition.timed_wait(lock, boost::posix_time::milliseconds(1000)))
@@ -31,7 +35,7 @@ else
 {
     //log
 }
-</code></pre>
+```
 
 原因不明， google上说有可能是相对时间引起的， 但是普遍推荐的是第一种方法。 另一个项目用此方法也从来没有出现在过这个问题，不解。。。
 
@@ -41,7 +45,8 @@ else
 后续篇
 翻开boost源码： boost\thread\win32\condition_variable.hpp
 
-<pre><code>
+```C
+
 bool timed_wait(unique_lock<mutex>& m,boost::system_time const& wait_until)
 {
     return do_wait(m,wait_until);
@@ -56,7 +61,7 @@ bool timed_wait(unique_lock<mutex>& m,duration_type const& wait_duration)
 {
     return do_wait(m,wait_duration.total_milliseconds());
 }
-</code></pre>
+```
 
 
 condition.timed_wait(lock, timeout) will call timed_wait(unique_lock<mutex>& m,boost::system_time const& wait_until)
@@ -68,7 +73,8 @@ condition.timed_wait(lock, boost::posix_time::milliseconds(500))) will call time
 查看timeout的定义： boost\thread\win32\thread_data.hpp
 
 
-<pre><code>
+```C
+
 struct timeout
 {
     unsigned long start;
@@ -92,12 +98,14 @@ struct timeout
         abs_time(abs_time_)
     {}
 }；
-</code></pre>
+```
 
 <br>
 哦哦哦，一个是相对时间， 一个是绝对时间， 再看timeout的成员函数：
 <br>
-<pre><code>
+
+```c
+
 remaining_time remaining_milliseconds() const
 {
     if(is_sentinel())
@@ -120,18 +128,20 @@ remaining_time remaining_milliseconds() const
         return remaining_time((abs_time-now).total_milliseconds()+1);
     }
 }
-</code></pre>
+```
 
 <br>
 可以怀疑，我们在用boost::get_system_time() 的时候，出了什么小case， 调整代码：
 <br>
-<pre><code>
+
+```C
+
 boost::system_time timeout = boost::get_system_time() + boost::posix_time::seconds(1);
 boost::system_time now = boost::get_system_time();
 boost::detail::timeout to(timeout);
 long rm = to.remaining_milliseconds().milliseconds;
 //print rm;
-</code></pre>
+```
 
 <br>
 这时候发生悲剧， 程序莫名其妙的好了， rm返回值维持在 remaining_milliseconds = 1001，而不是我期望的0 or 非法值。

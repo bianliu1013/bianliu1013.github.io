@@ -12,4 +12,23 @@ twitter_username:
 github_username:  bianliu1013
 
 # Build settings
-markdown: kramdown
+#markdown: kramdown
+#markdown_ext: md
+#kramdown:
+#  input: GFM
+
+highlighter: true
+permalink: pretty
+markdown: redcarpet
+redcarpet:
+  extensions: ["tables", "fenced_code_blocks"]
+  
+
+marked:
+  gfm: true
+  pedantic: false
+  sanitize: false
+  tables: true
+  breaks: false
+  smartLists: true
+  smartypants: false
