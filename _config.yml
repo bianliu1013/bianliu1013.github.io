@@ -17,7 +17,7 @@ github_username:  bianliu1013
 #kramdown:
 #  input: GFM
 
-highlighter: true
+#highlighter: true
 permalink: pretty
 markdown: redcarpet
 redcarpet:
