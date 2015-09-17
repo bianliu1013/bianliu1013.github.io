@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>leetcode - Set Matrix Zeroes! | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.click to show.Follow up:
+Did you use extra space?
+A straight forward solution using O(mn) space is probably">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode - Set Matrix Zeroes!">
+<meta property="og:url" content="http://yoursite.com/2015/05/17/2015-5-17-LeetCode - Set Matrix Zeroes/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.click to show.Follow up:
+Did you use extra space?
+A straight forward solution using O(mn) space is probably">
+<meta property="og:updated_time" content="2015-09-13T14:57:29.894Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode - Set Matrix Zeroes!">
+<meta name="twitter:description" content="Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.click to show.Follow up:
+Did you use extra space?
+A straight forward solution using O(mn) space is probably">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2015-5-17-LeetCode - Set Matrix Zeroes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/17/2015-5-17-LeetCode - Set Matrix Zeroes/" class="article-date">
+  <time datetime="2015-05-17T03:23:32.000Z" itemprop="datePublished">2015-05-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      leetcode - Set Matrix Zeroes!
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.<br>click to show.<br><strong>Follow up</strong>:</p>
+<p>Did you use extra space?</p>
+<p>A straight forward solution using O(mn) space is probably a bad idea.</p>
+<p>A simple improvement uses O(m + n) space, but still not the best solution.<br>Could you devise a constant space solution?</p>
+<hr>
+<h3 id="code">code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setZeroes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (matrix.size() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; hList;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vList;</span><br><span class="line">        hList.resize(matrix.size(), <span class="number">0</span>);</span><br><span class="line">        vList.resize(matrix[<span class="number">0</span>].size(), <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">0</span>; i &lt; matrix.size(); i++) &#123;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; it = matrix[i];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> j = <span class="number">0</span>; j &lt; it.size(); j++) &#123;</span><br><span class="line">                <span class="keyword">int</span> value = it[j];</span><br><span class="line">                <span class="keyword">if</span> (value == <span class="number">0</span>) &#123;</span><br><span class="line">                    hList[i] = <span class="number">1</span>;</span><br><span class="line">                    vList[j] = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">0</span>; i &lt; matrix.size(); i++) &#123;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; it = matrix[i];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> j = <span class="number">0</span>; j &lt; it.size(); j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (hList[i] == <span class="number">1</span> || vList[j] == <span class="number">1</span>) &#123;</span><br><span class="line">                    it[j] = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/05/17/2015-5-17-LeetCode - Set Matrix Zeroes/" data-id="cienu7gpp001224it9ijjgsg1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/05/17/2015-5-17-LeetCode -Longest Valid Parentheses/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          leetcode - Longest Valid Parentheses!
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/05/17/2015-5-17-LeetCode - Reverse Words in a String/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">leetcode - Reverse Words in a String!</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode-c/">leetcode c++</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux-c/">linux c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/09/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/28/2015-6-28-LeetCode - Combinations/">leetcode -  Combinations!</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/28/2015-6-28-LeetCode - Pascal's Triangle/">leetcode -  Pascal&#39;s Triangle!</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/23/2015-6-23-LeetCode - Binary Tree Maximum Path Sum/">leetcode -  Binary Tree Maximum Path Sum!</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/22/2015-6-22-LeetCode - Restore IP Addresses/">leetcode -  Restore IP Addresses!</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

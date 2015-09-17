@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2015-5-17-LeetCode - Maximum Depth of Binary Tree" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/17/2015-5-17-LeetCode - Maximum Depth of Binary Tree/" class="article-date">
+  <time datetime="2015-05-17T03:23:32.000Z" itemprop="datePublished">2015-05-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/17/2015-5-17-LeetCode - Maximum Depth of Binary Tree/">leetcode - Maximum Depth of Binary Tree!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Given a binary tree, find its maximum depth.</p>
+<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
+<hr>
+<h3 id="code">code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for binary tree</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode *root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left == <span class="literal">NULL</span> &amp;&amp; root-&gt;right == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> lMax = maxDepth(root-&gt;left);</span><br><span class="line">        <span class="keyword">int</span> rMax = maxDepth(root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + (lMax &gt;= rMax? lMax: rMax);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/05/17/2015-5-17-LeetCode - Maximum Depth of Binary Tree/" data-id="cienu7gpy001824itbljrvxki" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-01-01-boost condition timed wait return issue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/01/2015-01-01-boost condition timed wait return issue/" class="article-date">
+  <time datetime="2015-01-01T03:23:32.000Z" itemprop="datePublished">2015-01-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/boost-c/">boost c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/01/2015-01-01-boost condition timed wait return issue/">boost - condition timed_wait return issue</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在重写驱动时候，发现程序莫名其妙的copy占用率奇高，一步步的调试，发现是一个线程的在不停的空转，最后定位到</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">boost::mutex::<span class="function">scoped_lock <span class="title">lock</span><span class="params">(mutex)</span></span>;</span><br><span class="line">boost::system_time timeout = boost::get_system_time() + boost::posix_time::seconds(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">if</span>(condition.timed_wait(lock, timeout)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//log</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//log</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>改为以下用法，问题解决。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">boost::mutex::<span class="function">scoped_lock <span class="title">lock</span><span class="params">(mutex)</span></span>;</span><br><span class="line"><span class="comment">//boost::system_time timeout = boost::get_system_time() + boost::posix_time::seconds(1);</span></span><br><span class="line"><span class="keyword">if</span>(condition.timed_wait(lock, boost::posix_time::milliseconds(<span class="number">1000</span>)))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//log</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//log</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原因不明， google上说有可能是相对时间引起的， 但是普遍推荐的是第一种方法。 另一个项目用此方法也从来没有出现在过这个问题，不解。。。</p>
+<p>留个记号， 以后调查。</p>
+<p>后续篇<br>翻开boost源码： boost\thread\win32\condition_variable.hpp</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">timed_wait</span><span class="params">(unique_lock&lt;mutex&gt;&amp; m,boost::system_time <span class="keyword">const</span>&amp; wait_until)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> do_wait(m,wait_until);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">timed_wait</span><span class="params">(unique_lock&lt;mutex&gt;&amp; m,boost::xtime <span class="keyword">const</span>&amp; wait_until)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> do_wait(m,system_time(wait_until));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> duration_type&gt;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">timed_wait</span><span class="params">(unique_lock&lt;mutex&gt;&amp; m,duration_type <span class="keyword">const</span>&amp; wait_duration)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> do_wait(m,wait_duration.total_milliseconds());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>condition.timed_wait(lock, timeout) will call timed_wait(unique_lock<mutex>&amp; m,boost::system_time const&amp; wait_until)</mutex></p>
+<p>condition.timed_wait(lock, boost::posix_time::milliseconds(500))) will call timed_wait(unique_lock<mutex>&amp; m,duration_type const&amp; wait_duration)</mutex></p>
+<p>有理由怀疑 在调用的do_wait的时候，时间算错了？ boost::system_time 转换为 timeout，  tick_type 转换为 timeout。<br>查看timeout的定义： boost\thread\win32\thread_data.hpp</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">struct</span> timeout</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> start;</span><br><span class="line">    <span class="keyword">uintmax_t</span> milliseconds;</span><br><span class="line">    <span class="keyword">bool</span> relative;</span><br><span class="line">    boost::system_time abs_time;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">const</span> max_non_infinite_wait=<span class="number">0xfffffffe</span>;</span><br><span class="line"></span><br><span class="line">    timeout(<span class="keyword">uintmax_t</span> milliseconds_):</span><br><span class="line">        start(win32::GetTickCount()),</span><br><span class="line">        milliseconds(milliseconds_),</span><br><span class="line">        relative(<span class="literal">true</span>),</span><br><span class="line">        abs_time(boost::get_system_time())</span><br><span class="line">    &#123;&#125;</span><br><span class="line"></span><br><span class="line">    timeout(boost::system_time <span class="keyword">const</span>&amp; abs_time_):</span><br><span class="line">        start(win32::GetTickCount()),</span><br><span class="line">        milliseconds(<span class="number">0</span>),</span><br><span class="line">        relative(<span class="literal">false</span>),</span><br><span class="line">        abs_time(abs_time_)</span><br><span class="line">    &#123;&#125;</span><br><span class="line">&#125;；</span><br></pre></td></tr></table></figure>
+<p><br><br>哦哦哦，一个是相对时间， 一个是绝对时间， 再看timeout的成员函数：<br><br></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function">remaining_time <span class="title">remaining_milliseconds</span><span class="params">()</span> <span class="keyword">const</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(is_sentinel())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> remaining_time(win32::infinite);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(relative)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">const</span> now=win32::GetTickCount();</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">const</span> elapsed=now-start;</span><br><span class="line">        <span class="keyword">return</span> remaining_time((elapsed&lt;milliseconds)?(milliseconds-elapsed):<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        system_time <span class="keyword">const</span> now=get_system_time();</span><br><span class="line">        <span class="keyword">if</span>(abs_time&lt;=now)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> remaining_time(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> remaining_time((abs_time-now).total_milliseconds()+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><br><br>可以怀疑，我们在用boost::get_system_time() 的时候，出了什么小case， 调整代码：<br><br></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">boost::system_time timeout = boost::get_system_time() + boost::posix_time::seconds(<span class="number">1</span>);</span><br><span class="line">boost::system_time now = boost::get_system_time();</span><br><span class="line">boost::detail::<span class="function">timeout <span class="title">to</span><span class="params">(timeout)</span></span>;</span><br><span class="line"><span class="keyword">long</span> rm = to.remaining_milliseconds().milliseconds;</span><br><span class="line"><span class="comment">//print rm;</span></span><br></pre></td></tr></table></figure>
+<p><br><br>这时候发生悲剧， 程序莫名其妙的好了， rm返回值维持在 remaining_milliseconds = 1001，而不是我期望的0 or 非法值。</p>
+<p>anyway，下次碰到继续跟踪，有进展就好。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/01/01/2015-01-01-boost condition timed wait return issue/" data-id="cienu7gq2001a24it3w3yfwla" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2014-08-01-all things learned from UVC 1(libusb &amp; libusbk)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/" class="article-date">
+  <time datetime="2014-08-01T03:23:32.000Z" itemprop="datePublished">2014-08-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uvc-c/">uvc c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/">all things learned from UVC1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><br></p>
+<h2 id="Libusb_and_libusbK_的关系">Libusb and libusbK 的关系</h2><blockquote>
+<p>Libusbk是libusb的超集。同时支持libusb, winusb, libusbk三种驱动模式。</p>
+</blockquote>
+<p><br></p>
+<h2 id="环境搭建">环境搭建</h2><blockquote>
+<p>在 <a href="http://sourceforge.net/projects/libusbk" target="_blank" rel="external">http://sourceforge.net/projects/libusbk</a> 上可以拿到最新的 libusbk 库， setup.exe 会装好运行环境，driver installer creator Wizard 等工具。</p>
+</blockquote>
+<p><br></p>
+<h2 id="如何使用">如何使用</h2><blockquote>
+<p>用 “driver installer creator Wizard” 更新自己的driver，如果是UVC设备，就要把自带的usbvideo驱动换成 libusbk的驱动。更新成功后，device manager 里会有libusbk的一栏。</p>
+</blockquote>
+<p><br></p>
+<h2 id="Sample">Sample</h2><blockquote>
+<p>C:\libusbK-dev-kit\examples 里有自带的各种sample， 默认是vs2008的工程，如没有2008环境，自己可以改project文件。 Sample写的都很舒服， 一般只需要更把EXAMPLE_VID，EXAMPLE_VID的值改成自己设备的， 把EXAMPLES_USE_BENCHMARK_CONFIGURE 设为0 就OK。 体验体验吧，从设备里拿到第一个字节的冲动。：）</p>
+</blockquote>
+<p><br></p>
+<h2 id="如何验证？">如何验证？</h2><blockquote>
+<p>简单的验证，可以用usblyzer抓包工具 和你的sample结果进行对比，看是否一致。 Usblyzer一次抓包buffer是有限制的（默认16k？），自己摸索的改成最大。</p>
+</blockquote>
+<p><br></p>
+<h2 id="为何选择libusbk">为何选择libusbk</h2><blockquote>
+<p>因为硬件设计，每个isopackage 的头都标示frame的信息（非标准视频文件头），而我又需要这些信息，libusb不满足，详情见我的<a href="http://libusb.6.n5.nabble.com/how-to-get-the-size-of-each-packet-td5663684.html" target="_blank" rel="external">request</a></p>
+</blockquote>
+<p><br></p>
+<h2 id="libusk有什么不足">libusk有什么不足</h2><blockquote>
+<p>曾经见一位仁兄抱怨，是不是他是第一个用这个库的人。。现在用下来，有时候也真有同感，不过好在库的开发者都很好，support都很nice。几轮回合下来（<a href="http://libusb.6.n5.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=334628），看着最新的release" target="_blank" rel="external">http://libusb.6.n5.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=334628），看着最新的release</a> note里，好几个 reported by peter， 有那么点成就感（IT行业摸爬5年，终于为开源做点贡献），也有担心—蓝屏的问题还没有solution。将来。。。 Anyway, keep moving on.</p>
+</blockquote>
+<p><br></p>
+<h2 id="2005如何编译_libusbk">2005如何编译 libusbk</h2><blockquote>
+<p>在 <a href="http://sourceforge.net/projects/libusbk" target="_blank" rel="external">http://sourceforge.net/projects/libusbk</a> 下到最新的source， 在\src\lib下面有libusbK_lib.vcproj，修改Version=”8.00”， 然后build，应该会报告两个错， error code找不到，可以google标准的windows error code，直接用数字代替。重新编译，就能得到静态库了。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/" data-id="cienu7gmm000024it63jf4fl0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2014-08-01-all things learned from UVC 2(libusb &amp; libusbk)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/01/2014-08-01-all things learned from UVC 2(libusb & libusbk)/" class="article-date">
+  <time datetime="2014-08-01T03:23:32.000Z" itemprop="datePublished">2014-08-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uvc-c/">uvc c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/01/2014-08-01-all things learned from UVC 2(libusb & libusbk)/">all things learned from UVC2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><br><br><strong>于UVC协议的QA，欢迎扩充，添加comments</strong>。<br><br></p>
+<p>###usb 协议概述###</p>
+<h2 id="usb和endpoint关系">usb和endpoint关系</h2><blockquote>
+<p>端点（Endpoint）：是 USB 设备中的可以进行数据收发的最小单元，支持单向或者双向的数据传输。设备支持端点的数量是有限制的，除默认端点外低速设备最多支持 2 组端点（2 个输入，2 个输出），高速和全速设备最多支持 15 组端点。</p>
+<p>总的来说就是一个设备（device）会拥有一个或者多个endpoint,<br>endpoint 0: 所有的USB 设备必须具有端点0，它可以作为in 端点，也可以作为out 端点，USB 系统软件利用它来实现缺省的控制管道，从而控制设备。设备插入windows后，系统用来查询设备信息。</p>
+</blockquote>
+<p><br></p>
+<h2 id="Endpoint的类型">Endpoint的类型</h2><blockquote>
+<p>USB endpoint 有四种类型，也就分别对应了四种不同的数据传输方式。它们是控制传输（Control Transfers），中断传输（Interrupt Data Transfers），批量传输(Bulk DataTransfers)，等时传输(Isochronous Data Transfers)。控制传输用来控制对USB 设备不同部分的访问，通常用于配置设备，获取设备信息，发送命令到设备，或者获取设备的状态报告。总之就是用来传送控制信息的，每个USB 设备都会有一个endpoint 0 的控制端点，内核里的USB core 使用它在设备插入时进行设备的配置</p>
+</blockquote>
+<p><br></p>
+<h2 id="如何拿到工作（我们需要的）的endpoint">如何拿到工作（我们需要的）的endpoint</h2><blockquote>
+<p>正在研究中：是固定的address，还是启动是获取？<br><code>update</code> ：现在看来，可以在init的时候，通过libusb 获取，根据类型，大小参数区分，是否是自己需要的EP。</p>
+</blockquote>
+<p><br></p>
+<h2 id="如何与usb设备进行通信">如何与usb设备进行通信</h2><blockquote>
+<p>用usblib库， 简单用例：<br><a href="http://www.dreamincode.net/forums/topic/148707-introduction-to-using-libusb-10/page__p__885389__hl__USB__fromsearch__1#entry885389" target="_blank" rel="external">http://www.dreamincode.net/forums/topic/148707-introduction-to-using-libusb-10/page__p__885389__hl__USB__fromsearch__1#entry885389</a><br><a href="http://libusb.sourceforge.net/api-1.0/index.html" target="_blank" rel="external">http://libusb.sourceforge.net/api-1.0/index.html</a></p>
+</blockquote>
+<p><br></p>
+<h2 id="是否有windows自带api与usb设备通讯">是否有windows自带api与usb设备通讯</h2><blockquote>
+<p>WinUSB library.  Do some work  like libusb, but provided by MS.</p>
+</blockquote>
+<p><br></p>
+<h2 id="我们需要和usb直接打交道吗？">我们需要和usb直接打交道吗？</h2><blockquote>
+<p>换句话说，我们需要在WinUSB 或者 libuse上面封装，发送数据，控制我们的camera<br>暂时看来，不需要，因为UVC是在USB协议上层的子协议（是否可以这么理解？）而我们有这样的库，帮我们做UVC的事情。<br><code>update</code>：说法没有错误，只是现在看来，不够。</p>
+</blockquote>
+<p><br></p>
+<h2 id="接问题7，那是神马东东">接问题7，那是神马东东</h2><blockquote>
+<p>DirectShow<br>优势：有demo, 封装好。<br>劣势：跨平台？（有多少项目能真正做到这点？）<br>More info: <a href="http://msdn.microsoft.com/en-us/library/windows/hardware/ff568658(v=vs.85).aspx" target="_blank" rel="external">http://msdn.microsoft.com/en-us/library/windows/hardware/ff568658(v=vs.85).aspx</a><br><code>update</code>：DirectShow不够，痛苦的摸索后，最后还是转到libusb上。</p>
+</blockquote>
+<p><br></p>
+<h2 id="与usb设备进行通讯时，同步传输？_可否异步，多线程">与usb设备进行通讯时，同步传输？ 可否异步，多线程</h2><blockquote>
+<p>DirectShow 关心。（不确定）<br>update: Direct Show不够，direct show 排除，问题无意义。</p>
+</blockquote>
+<p><br></p>
+<h2 id="提供一个最简单的demo，譬如从摄像头里拿参数信息">提供一个最简单的demo，譬如从摄像头里拿参数信息</h2><blockquote>
+<p><code>update</code>: future。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/08/01/2014-08-01-all things learned from UVC 2(libusb & libusbk)/" data-id="cienu7gq8001d24it88riiq66" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
+  
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode-c/">leetcode c++</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux-c/">linux c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/09/17/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/28/2015-6-28-LeetCode - Combinations/">leetcode -  Combinations!</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/28/2015-6-28-LeetCode - Pascal's Triangle/">leetcode -  Pascal&#39;s Triangle!</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/23/2015-6-23-LeetCode - Binary Tree Maximum Path Sum/">leetcode -  Binary Tree Maximum Path Sum!</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/22/2015-6-22-LeetCode - Restore IP Addresses/">leetcode -  Restore IP Addresses!</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
