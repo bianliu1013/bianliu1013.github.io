@@ -61,6 +61,48 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2015-5-17-LeetCode - Merge Two Sorted Lists" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/17/2015-5-17-LeetCode - Merge Two Sorted Lists/" class="article-date">
+  <time datetime="2015-05-17T03:23:32.000Z" itemprop="datePublished">2015-05-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/17/2015-5-17-LeetCode - Merge Two Sorted Lists/">leetcode - Merge Two Sorted Lists!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+<hr>
+<h3 id="code">code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">mergeTwoLists</span><span class="params">(ListNode *l1, ListNode *l2)</span> </span>&#123;</span><br><span class="line">        ListNode* p = <span class="literal">NULL</span>;</span><br><span class="line">        ListNode* p1 = l1;</span><br><span class="line">        ListNode* p2 = l2;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(l1 == <span class="literal">NULL</span>)</span><br><span class="line">             <span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span>(l2 == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// head</span></span><br><span class="line">        <span class="keyword">if</span>(l1-&gt;val &lt;= l2-&gt;val)</span><br><span class="line">        &#123;</span><br><span class="line">            p = p1;</span><br><span class="line">            p1 = p1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            p = p2;</span><br><span class="line">            p2 = p2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        ListNode* p_head = p;</span><br><span class="line">        <span class="keyword">while</span>(p1 != <span class="literal">NULL</span> || p2 != <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(p1 == <span class="literal">NULL</span>)&#123;</span><br><span class="line">                p-&gt;next = p2;</span><br><span class="line">                <span class="keyword">return</span> p_head;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(p2 == <span class="literal">NULL</span>)&#123;</span><br><span class="line">                p-&gt;next = p1;</span><br><span class="line">                <span class="keyword">return</span> p_head;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">            <span class="keyword">if</span>(p1-&gt;val &lt;= p2-&gt;val)</span><br><span class="line">            &#123;</span><br><span class="line">                p-&gt;next = p1;</span><br><span class="line">                p1 = p1-&gt;next;</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                p-&gt;next = p2;</span><br><span class="line">                p2 = p2-&gt;next;</span><br><span class="line">                p = p-&gt;next;           </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> p_head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/05/17/2015-5-17-LeetCode - Merge Two Sorted Lists/" data-id="cietvpck20017z0itm3f8s7u1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2015-5-17-LeetCode - Maximum Depth of Binary Tree" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/05/17/2015-5-17-LeetCode - Maximum Depth of Binary Tree/" class="article-date">
@@ -94,7 +136,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/17/2015-5-17-LeetCode - Maximum Depth of Binary Tree/" data-id="cienu7gpy001824itbljrvxki" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/17/2015-5-17-LeetCode - Maximum Depth of Binary Tree/" data-id="cietvpck30019z0itv8sf98zg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -152,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/01/01/2015-01-01-boost condition timed wait return issue/" data-id="cienu7gq2001a24it3w3yfwla" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/01/01/2015-01-01-boost condition timed wait return issue/" data-id="cietvpck7001bz0itsvbz86n3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,7 +266,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/" data-id="cienu7gmm000024it63jf4fl0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/" data-id="cietvpchk0000z0itsgjfcm6m" class="article-share-link">Share</a>
       
       
     </footer>
@@ -302,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/08/01/2014-08-01-all things learned from UVC 2(libusb & libusbk)/" data-id="cienu7gq8001d24it88riiq66" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2014/08/01/2014-08-01-all things learned from UVC 2(libusb & libusbk)/" data-id="cietvpck9001ez0itxgraow8v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -338,7 +380,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -348,6 +390,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/09/21/2015-9-21-metro button/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2015/09/17/hello-world/">Hello World</a>
@@ -363,10 +409,6 @@
         
           <li>
             <a href="/2015/06/23/2015-6-23-LeetCode - Binary Tree Maximum Path Sum/">leetcode -  Binary Tree Maximum Path Sum!</a>
-          </li>
-        
-          <li>
-            <a href="/2015/06/22/2015-6-22-LeetCode - Restore IP Addresses/">leetcode -  Restore IP Addresses!</a>
           </li>
         
       </ul>

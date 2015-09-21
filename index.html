@@ -61,6 +61,41 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2015-9-21-metro button" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/09/21/2015-9-21-metro button/" class="article-date">
+  <time datetime="2015-09-21T11:55:50.886Z" itemprop="datePublished">2015-09-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="An_Metro_sytle_button_build_with_wxwidget">An Metro sytle button build with wxwidget</h1><p>Here’s how to implement a metro style button with wxwidgets</p>
+<ul>
+<li>no-border</li>
+<li>flat</li>
+<li>foucsed, pushed, etc. event enable</li>
+<li>default button event behavior </li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> MetroButton: <span class="keyword">public</span> wxButton &#123;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  <span class="keyword">typedef</span> <span class="keyword">enum</span> &#123;</span><br><span class="line">    BT_STATE_NORMAL,</span><br><span class="line">    BT_STATE_FOCUS,</span><br><span class="line">    BT_STATE_SELECT</span><br><span class="line">  &#125; BT_STATE;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  wxWindow* m_parent;</span><br><span class="line">  <span class="keyword">bool</span> have_focus_;    <span class="comment">// mouse enter</span></span><br><span class="line">  <span class="keyword">bool</span> selected_;      <span class="comment">// mouse left button down</span></span><br><span class="line">  <span class="keyword">bool</span> highlighted_;   <span class="comment">// default selected button</span></span><br><span class="line">  wxString label_;</span><br><span class="line"></span><br><span class="line">  BT_STATE state_;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  MetroButton(wxWindow* parent, <span class="keyword">int</span> id, wxString label)</span><br><span class="line">    : wxButton(parent, id, label, wxDefaultPosition, wxSize(<span class="number">90</span>, <span class="number">30</span>), wxNO_BORDER)</span><br><span class="line">    , have_focus_(<span class="literal">false</span>)</span><br><span class="line">    , selected_(<span class="literal">false</span>)</span><br><span class="line">    , highlighted_(<span class="literal">false</span>)</span><br><span class="line">    , label_(label) &#123;</span><br><span class="line">    m_parent = parent;</span><br><span class="line"></span><br><span class="line">    Connect(wxEVT_PAINT, wxPaintEventHandler(MetroButton::OnPaint));</span><br><span class="line">    Connect(wxEVT_ENTER_WINDOW, wxMouseEventHandler(MetroButton::OnEnter));</span><br><span class="line">    Connect(wxEVT_LEAVE_WINDOW, wxMouseEventHandler(MetroButton::OnLeave));</span><br><span class="line">    Connect(wxEVT_LEFT_DOWN, wxMouseEventHandler(MetroButton::OnLeftDown));</span><br><span class="line"></span><br><span class="line">    SetBackgroundColour(wxColour(<span class="number">51</span>, <span class="number">51</span>, <span class="number">51</span>));</span><br><span class="line"></span><br><span class="line">    state_ = BT_STATE_NORMAL;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">PrepareDCColor</span><span class="params">(wxPaintDC&amp; dc)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> wxColour color_bk_normal = wxColour(<span class="number">56</span>, <span class="number">56</span>, <span class="number">56</span>);</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> wxColour color_bk_focus = wxColour(<span class="number">28</span>, <span class="number">28</span>, <span class="number">28</span>);</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> wxColour color_bk_selected_ = wxColour(<span class="number">152</span>, <span class="number">187</span>, <span class="number">211</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> wxColour color_bordline_normal_ = wxColour(<span class="number">56</span>, <span class="number">56</span>, <span class="number">56</span>);</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> wxColour color_bordline_focus = wxColour(<span class="number">56</span>, <span class="number">56</span>, <span class="number">56</span>);</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> wxColour color_bordline_selected_ = wxColour(<span class="number">152</span>, <span class="number">187</span>, <span class="number">211</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> wxColour color_text_normal = wxColour(<span class="number">192</span>, <span class="number">192</span>, <span class="number">192</span>);</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> wxColour color_text_line_focus = wxColour(<span class="number">192</span>, <span class="number">192</span>, <span class="number">192</span>);</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> wxColour color_text_line_selected_ = wxColour(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">switch</span> (state_) &#123;</span><br><span class="line">    <span class="keyword">case</span> BT_STATE_SELECT:</span><br><span class="line">      dc.SetPen(wxPen(color_bordline_selected_));</span><br><span class="line">      dc.SetBrush(wxBrush(color_bk_selected_));</span><br><span class="line">      dc.SetTextForeground(color_text_line_selected_);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> BT_STATE_FOCUS:</span><br><span class="line">      dc.SetPen(wxPen(color_bordline_focus));</span><br><span class="line">      dc.SetBrush(wxBrush(color_bk_focus));</span><br><span class="line">      dc.SetTextForeground(color_text_line_focus);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> BT_STATE_NORMAL:</span><br><span class="line">      dc.SetPen(wxPen(color_bordline_normal_));</span><br><span class="line">      dc.SetBrush(wxBrush(color_bk_normal));</span><br><span class="line">      dc.SetTextForeground(color_text_normal);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">OnPaint</span><span class="params">(wxPaintEvent&amp; event)</span> </span>&#123;</span><br><span class="line">    <span class="function">wxPaintDC <span class="title">dc</span><span class="params">(<span class="keyword">this</span>)</span></span>;</span><br><span class="line">    wxSize size = GetSize();</span><br><span class="line"></span><br><span class="line">    PrepareDCColor(dc);</span><br><span class="line">    dc.DrawRectangle(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">this</span>-&gt;GetSize().GetWidth(), GetSize().GetHeight());</span><br><span class="line"></span><br><span class="line">    wxFont textFont = GetFont();</span><br><span class="line">    dc.SetFont(textFont);</span><br><span class="line">    wxSize label_size = dc.GetTextExtent(label_);</span><br><span class="line">    wxPoint label_pt = wxPoint((size.GetWidth() - label_size.GetWidth()) / <span class="number">2</span>,</span><br><span class="line">                               (size.GetHeight() - label_size.GetHeight()) / <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    dc.DrawText(label_, label_pt);</span><br><span class="line"></span><br><span class="line">    event.Skip();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">OnEnter</span><span class="params">(wxMouseEvent&amp; event)</span> </span>&#123;</span><br><span class="line">    state_ = MetroButton::BT_STATE_FOCUS;</span><br><span class="line">    have_focus_ = <span class="literal">true</span>;</span><br><span class="line">    Refresh(<span class="literal">false</span>);</span><br><span class="line">    Update();</span><br><span class="line">    event.Skip();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">OnLeave</span><span class="params">(wxMouseEvent&amp; event)</span> </span>&#123;</span><br><span class="line">    state_ = MetroButton::BT_STATE_NORMAL;</span><br><span class="line">    have_focus_ = <span class="literal">false</span>;</span><br><span class="line">    selected_ = <span class="literal">false</span>;</span><br><span class="line">    Refresh(<span class="literal">false</span>);</span><br><span class="line">    Update();</span><br><span class="line">    event.Skip();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">OnLeftDown</span><span class="params">(wxMouseEvent&amp; event)</span> </span>&#123;</span><br><span class="line">    state_ = MetroButton::BT_STATE_SELECT;</span><br><span class="line">    selected_ = <span class="literal">true</span>;</span><br><span class="line">    Refresh(<span class="literal">false</span>);</span><br><span class="line">    Update();</span><br><span class="line">    event.Skip();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>the screen shot looks like:<br><img src="http://bianliu1013.github.io/image/2015-9-21-metro%20button1.png" alt="normal"><br><img src="http://bianliu1013.github.io/image/2015-9-21-metro%20button2.png" alt="hover"><br><img src="http://bianliu1013.github.io/image/2015-9-21-metro%20button3.png" alt="pushed"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/09/21/2015-9-21-metro button/" data-id="cietvpcil0004z0itc5co8jra" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/09/17/hello-world/" class="article-date">
@@ -96,7 +131,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/09/17/hello-world/" data-id="cienu7gns000324it0iknhg15" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/09/17/hello-world/" data-id="cietvpcii0003z0it20ok69g7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -150,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/28/2015-6-28-LeetCode - Combinations/" data-id="cienu7goq000h24it9f8zutql" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/28/2015-6-28-LeetCode - Combinations/" data-id="cietvpcj2000iz0itnzf8v7ju" class="article-share-link">Share</a>
       
       
     </footer>
@@ -230,7 +265,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/28/2015-6-28-LeetCode - Pascal's Triangle/" data-id="cienu7gol000f24it8spw6kop" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/28/2015-6-28-LeetCode - Pascal's Triangle/" data-id="cietvpciz000gz0it0ecnok8s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -280,7 +315,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/23/2015-6-23-LeetCode - Binary Tree Maximum Path Sum/" data-id="cienu7gp0000m24ita3wmfvl8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/23/2015-6-23-LeetCode - Binary Tree Maximum Path Sum/" data-id="cietvpcjb000nz0itdenuttzl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -324,7 +359,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/22/2015-6-22-LeetCode - Restore IP Addresses/" data-id="cienu7gp3000o24ittadsircf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/22/2015-6-22-LeetCode - Restore IP Addresses/" data-id="cietvpcjc000pz0it0oummflz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -373,7 +408,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/16/2015-6-16-LeetCode - Simplify Path/" data-id="cienu7gp5000q24it85kbzxld" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/16/2015-6-16-LeetCode - Simplify Path/" data-id="cietvpcjf000rz0itoopjszb6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -422,7 +457,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/11/2015-6-11-LeetCode - Remove Nth Node From End of List/" data-id="cienu7gpa000s24itvl11m3lg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/11/2015-6-11-LeetCode - Remove Nth Node From End of List/" data-id="cietvpcjk000tz0itm5ga8rjb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -471,7 +506,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/07/2015-6-7-LeetCode - Isomorphic Strings/" data-id="cienu7go6000424it4xb4tmpq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/07/2015-6-7-LeetCode - Isomorphic Strings/" data-id="cietvpcin0005z0itg3zdnzni" class="article-share-link">Share</a>
       
       
     </footer>
@@ -517,69 +552,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/06/2015-6-6-LeetCode - Word Break II/" data-id="cienu7go9000724itauxqjc06" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2015-6-5-LeetCode - Text Justification" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/05/2015-6-5-LeetCode - Text Justification/" class="article-date">
-  <time datetime="2015-06-05T03:23:32.000Z" itemprop="datePublished">2015-06-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/05/2015-6-5-LeetCode - Text Justification/">leetcode -  Text Justification!</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> Given an array of words and a length L, format the text such that each line has exactly L characters and is fully (left and right) justified.</p>
-<p>You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra spaces ‘ ‘ when necessary so </p>
-<p>that each line has exactly L characters.</p>
-<p>Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a line do not divide evenly between words, </p>
-<p>the empty slots on the left will be assigned more spaces than the slots on the right.</p>
-<p>For the last line of text, it should be left justified and no extra space is inserted between words.</p>
-<p>For example,</p>
-<p>words: <font color="red">[“This”, “is”, “an”, “example”, “of”, “text”, “justification.”]</font></p>
-<p>L: <font color="red">16</font>. </p>
-<p>Return the formatted lines as:</p>
-<hr>
-<p>[</p>
-<p>   “This    is    an”,</p>
-<p>   “example  of text”,</p>
-<p>   “justification.  “</p>
-<p>]</p>
-<hr>
-<p>Note: Each word is guaranteed not to exceed L in length. </p>
-<p>Corner Cases:</p>
-<pre><code>A <span class="built_in">line</span> other than <span class="operator">the</span> <span class="keyword">last</span> <span class="built_in">line</span> might contain only <span class="constant">one</span> <span class="built_in">word</span>. What should you <span class="built_in">do</span> <span class="operator">in</span> this <span class="keyword">case</span>?
-
-In this <span class="keyword">case</span>, that <span class="built_in">line</span> should be left-justified.
-</code></pre><h3 id="code:">code:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">AllLenth</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; cur_lines)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cur_lines.size(); i++) &#123;</span><br><span class="line">            len += cur_lines[i].length();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> len;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">AdjustLines</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; cur_lines, <span class="keyword">int</span> maxWidth, <span class="keyword">bool</span> bLastLine)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> str_all = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">if</span> (maxWidth == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> str_all;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">true</span> == bLastLine) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cur_lines.size(); i++) &#123;</span><br><span class="line">                str_all += cur_lines[i];</span><br><span class="line">                <span class="keyword">if</span> (str_all.length() &lt; maxWidth) &#123;</span><br><span class="line">                    str_all.append(<span class="number">1</span>, <span class="string">' '</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            str_all.append(maxWidth - str_all.length(), <span class="string">' '</span>);</span><br><span class="line">            <span class="keyword">return</span> str_all;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (cur_lines.size() == <span class="number">1</span>) &#123;</span><br><span class="line">            str_all = cur_lines[<span class="number">0</span>];</span><br><span class="line">            str_all.append(maxWidth - str_all.length(), <span class="string">' '</span>);</span><br><span class="line">            <span class="keyword">return</span> str_all;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            str_all += cur_lines[cur_lines.size() - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> all_len = AllLenth(cur_lines);</span><br><span class="line">            <span class="keyword">int</span> empty_len = maxWidth - all_len;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = (cur_lines.size() - <span class="number">2</span>); i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">                <span class="keyword">int</span> len = empty_len / (i + <span class="number">1</span>);</span><br><span class="line">                empty_len -= len;</span><br><span class="line">                <span class="built_in">string</span> empty;</span><br><span class="line">                empty.append(len, <span class="string">' '</span>);</span><br><span class="line">                str_all = empty + str_all;</span><br><span class="line">                str_all = cur_lines[i] + str_all;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> str_all;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; fullJustify(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words, <span class="keyword">int</span> maxWidth) &#123;</span><br><span class="line">        <span class="keyword">if</span> (maxWidth == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> words;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; cur_lines;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; all_line;</span><br><span class="line">        <span class="built_in">string</span> cur_word = words[<span class="number">0</span>];</span><br><span class="line">        cur_lines.push_back(cur_word);</span><br><span class="line">        <span class="keyword">int</span> line_len = cur_word.length();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; words.size(); i++) &#123;</span><br><span class="line">            cur_word = words[i];</span><br><span class="line"></span><br><span class="line">            <span class="comment">// if &lt; maxWidth</span></span><br><span class="line">            <span class="keyword">if</span> ((line_len + cur_word.length()) &lt; maxWidth) &#123;</span><br><span class="line">                cur_lines.push_back(cur_word);</span><br><span class="line">                line_len += cur_word.length() + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                all_line.push_back(AdjustLines(cur_lines, maxWidth, <span class="literal">false</span>));</span><br><span class="line"></span><br><span class="line">                <span class="comment">// new line</span></span><br><span class="line">                cur_lines.clear();</span><br><span class="line">                cur_lines.push_back(cur_word);</span><br><span class="line">                line_len = cur_word.length();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">string</span> str = AdjustLines(cur_lines, maxWidth, <span class="literal">true</span>);</span><br><span class="line">        <span class="keyword">if</span> (str.length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            all_line.push_back(str);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> all_line;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/05/2015-6-5-LeetCode - Text Justification/" data-id="cienu7goc000924itq6ognj35" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/06/2015-6-6-LeetCode - Word Break II/" data-id="cietvpcip0008z0itw3fumzis" class="article-share-link">Share</a>
       
       
     </footer>
@@ -615,7 +588,7 @@ In this <span class="keyword">case</span>, that <span class="built_in">line</spa
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -625,6 +598,10 @@ In this <span class="keyword">case</span>, that <span class="built_in">line</spa
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/09/21/2015-9-21-metro button/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2015/09/17/hello-world/">Hello World</a>
@@ -640,10 +617,6 @@ In this <span class="keyword">case</span>, that <span class="built_in">line</spa
         
           <li>
             <a href="/2015/06/23/2015-6-23-LeetCode - Binary Tree Maximum Path Sum/">leetcode -  Binary Tree Maximum Path Sum!</a>
-          </li>
-        
-          <li>
-            <a href="/2015/06/22/2015-6-22-LeetCode - Restore IP Addresses/">leetcode -  Restore IP Addresses!</a>
           </li>
         
       </ul>
