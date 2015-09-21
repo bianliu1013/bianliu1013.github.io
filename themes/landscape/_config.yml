@@ -1,0 +1,33 @@
+# Header
+menu:
+  Home: /
+  Archives: /archives
+  Projects: /project
+  About: /about
+rss: /atom.xml
+
+
+blogrolls: #友情链接
+  - old 163 blog: http://bianliu1013.blog.163.com
+#  Guestbook: /about
+
+# Content
+excerpt_link: Read More
+fancybox: true
+
+# Sidebar
+sidebar: right
+widgets:
+- category
+- tag
+- tagcloud
+- archive
+- recent_posts
+
+# Miscellaneous
+google_analytics:
+favicon: /favicon.png
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:
