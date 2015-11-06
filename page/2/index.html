@@ -65,6 +65,190 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2015-6-28-LeetCode - Combinations" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/28/2015-6-28-LeetCode - Combinations/" class="article-date">
+  <time datetime="2015-06-28T03:23:32.000Z" itemprop="datePublished">2015-06-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/28/2015-6-28-LeetCode - Combinations/">leetcode -  Combinations!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> Given two integers n and k, return all possible combinations of k numbers out of 1 … n.</p>
+<p>For example,</p>
+<p>If n = 4 and k = 2, a solution is: </p>
+<p>Return </p>
+<hr>
+<pre><code>[
+[<span class="number">2</span>,<span class="number">4</span>],
+[<span class="number">3</span>,<span class="number">4</span>],
+[<span class="number">2</span>,<span class="number">3</span>],
+[<span class="number">1</span>,<span class="number">2</span>],
+[<span class="number">1</span>,<span class="number">3</span>],
+[<span class="number">1</span>,<span class="number">4</span>],
+]
+</code></pre><hr>
+<h3 id="code:">code:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; combine_sub(<span class="keyword">int</span> b, <span class="keyword">int</span> e, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a;</span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = b; i &lt;= e; i++) &#123;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a_i = &#123; i &#125;;</span><br><span class="line">                a.push_back(a_i);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = b; i &lt;= e - k + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a_left = combine_sub(i + <span class="number">1</span>, e, k - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (a_left.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">auto</span> j : a_left) &#123;</span><br><span class="line">                    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ai = &#123; i &#125;;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">auto</span> l : j) &#123;</span><br><span class="line">                        ai.push_back(l);</span><br><span class="line">                    &#125;</span><br><span class="line">                    a.push_back(ai);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; combine(<span class="keyword">int</span> n, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a = combine_sub(<span class="number">1</span>, n, k);</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/06/28/2015-6-28-LeetCode - Combinations/" data-id="cigm7qxsi000mn8itx76bcqfj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-6-28-LeetCode - Pascal&#39;s Triangle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/28/2015-6-28-LeetCode - Pascal's Triangle/" class="article-date">
+  <time datetime="2015-06-28T03:23:32.000Z" itemprop="datePublished">2015-06-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/28/2015-6-28-LeetCode - Pascal's Triangle/">leetcode -  Pascal&#39;s Triangle!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Given numRows, generate the first numRows of Pascal’s triangle.</p>
+<p>For example, given numRows = 5,</p>
+<p>Return </p>
+<hr>
+<pre><code>[
+    [<span class="number">1</span>],
+   [<span class="number">1</span>,<span class="number">1</span>],
+  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>],
+ [<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">1</span>],
+[<span class="number">1</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">1</span>]
+]
+</code></pre><hr>
+<h3 id="code:">code:</h3><pre><code>
+class Solution {
+  public:
+    vector<vector<int>> generate(int numRows) {
+        vector<vector<int>> a;
+        if (numRows == 0) {
+            return a;
+        }
+
+        if (numRows == 1) {
+            a.push_back({ 1 });
+            return a;
+        } else {
+            a.push_back({ 1 });
+            for (int i = 1; i < numRows; i++) {
+                vector<int> array_i = { 1 };
+                for (int j = 1; j <= i="" -="" 1;="" j++)="" {="" vector<int="">& last_array = a[i - 1];
+                    int j_value = last_array[j - 1] + last_array[j];
+                    array_i.push_back(j_value);
+                }
+                array_i.push_back(1);
+                a.push_back(array_i);
+            }
+        }
+
+        return a;
+    }
+};
+</=></int></vector<int></vector<int></code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/06/28/2015-6-28-LeetCode - Pascal's Triangle/" data-id="cigm7qxsc000kn8it9oes3b2c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-6-23-LeetCode - Binary Tree Maximum Path Sum" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/23/2015-6-23-LeetCode - Binary Tree Maximum Path Sum/" class="article-date">
+  <time datetime="2015-06-23T03:23:32.000Z" itemprop="datePublished">2015-06-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/23/2015-6-23-LeetCode - Binary Tree Maximum Path Sum/">leetcode -  Binary Tree Maximum Path Sum!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> Given a binary tree, find the maximum path sum.</p>
+<p>The path may start and end at any node in the tree.</p>
+<p>For example:</p>
+<p>Given the below binary tree, </p>
+<hr>
+<pre><code>    <span class="number">1</span>
+/       \
+<span class="number">2</span>       <span class="number">3</span>
+</code></pre><hr>
+<p>return <font color="red">6</font></p>
+<h3 id="code:">code:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> maxSum;</span><br><span class="line"></span><br><span class="line">    Solution() &#123;</span><br><span class="line">        maxSum = INT_MIN;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxDeepSum</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> l = maxDeepSum(root-&gt;left);</span><br><span class="line">            <span class="keyword">int</span> r = maxDeepSum(root-&gt;right);</span><br><span class="line">            <span class="keyword">int</span> v = root-&gt;val + max(<span class="number">0</span>, (l &gt; r ? l : r));</span><br><span class="line">            maxSum = max(maxSum, max(v, root-&gt;val + l + r));</span><br><span class="line">            <span class="keyword">return</span> v;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxPathSum</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">NULL</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> v = root-&gt;val + max(<span class="number">0</span>, maxDeepSum(root-&gt;left)) + max(<span class="number">0</span>, maxDeepSum(root-&gt;right));</span><br><span class="line">        maxSum = v &gt; maxSum ? v : maxSum;</span><br><span class="line">        <span class="keyword">return</span> maxSum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/06/23/2015-6-23-LeetCode - Binary Tree Maximum Path Sum/" data-id="cigm7qxsn000rn8it9m30luru" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2015-6-22-LeetCode - Restore IP Addresses" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/06/22/2015-6-22-LeetCode - Restore IP Addresses/" class="article-date">
@@ -412,208 +596,9 @@ In this <span class="keyword">case</span>, that <span class="built_in">line</spa
 
 
   
-    <article id="post-2015-6-3-LeetCode - Word Break" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/03/2015-6-3-LeetCode - Word Break/" class="article-date">
-  <time datetime="2015-06-03T03:23:32.000Z" itemprop="datePublished">2015-06-03</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/03/2015-6-3-LeetCode - Word Break/">leetcode - Word Break!</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.</p>
-<p>For example, given</p>
-<p>s = <font color="red">“leetcode”</font>,</p>
-<p>dict = <font color="red">[“leet”, “code”]</font>.</p>
-<p>Return true because “leetcode” can be segmented as “leet code”. </p>
-<hr>
-<h3 id="code:">code:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">wordBreak</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">unordered_set</span>&lt;<span class="built_in">string</span>&gt;&amp; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (wordDict.size() == <span class="number">0</span> &amp;&amp; s.size() != <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (wordDict.size() == <span class="number">0</span> &amp;&amp; s.size() == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; dpArray(s.length(), <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= s.length(); j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((i - <span class="number">1</span>) &gt;= <span class="number">0</span> &amp;&amp; <span class="literal">false</span> == dpArray[i - <span class="number">1</span>]) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (wordDict.find(s.substr(i, j - i)) != wordDict.end()) &#123;</span><br><span class="line">                    dpArray[j - <span class="number">1</span>] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dpArray[s.length() - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/03/2015-6-3-LeetCode - Word Break/" data-id="cigm7qxs9000in8itol9akfqh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2015-6-28-Get seconds since the Epoch ( UTC time as input parameter)" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/05/28/2015-6-28-Get seconds since the Epoch ( UTC time as input parameter)/" class="article-date">
-  <time datetime="2015-05-28T03:23:32.000Z" itemprop="datePublished">2015-05-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/linux-c/">linux c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/28/2015-6-28-Get seconds since the Epoch ( UTC time as input parameter)/">Get seconds since the Epoch ( UTC time as input parameter)  !</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="code:">code:</h3><pre><code>
-/*
- returns the utc timezone offset
- (e.g. -8 hours for PST)
- */
-int get_utc_offset() {
-    time_t zero = 24*60*60L;
-    struct tm * timeptr;
-    int gmtime_hours;
-
-    /* get the local time for Jan 2, 1900 00:00 UTC */
-    timeptr = localtime( &zero );
-    gmtime_hours = timeptr->tm_hour;
-
-    /* if the local time is the "day before" the UTC, subtract 24 hours
-     from the hours to get the UTC offset */
-    if( timeptr->tm_mday < 2 )
-        gmtime_hours -= 24;
-
-    return gmtime_hours;
-}
-
-/*
- the utc analogue of mktime,
- (much like timegm on some systems)
- */
-time_t tm_to_time_t_utc( struct tm * timeptr ) {
-
-    /* gets the epoch time relative to the local time zone,
-     and then adds the appropriate number of seconds to make it UTC */
-    return mktime( timeptr ) + get_utc_offset() * 3600;
-}
-
-
-time_t mktime_wrapper( int month, int day, int year,
-                      int hour=0, int min=0, int sec=0, bool isDST=0
-                      )
-{
-    tm t;
-    t.tm_sec=sec, t.tm_min=min, t.tm_hour=hour, t.tm_isdst=isDST;
-    t.tm_mday=day, t.tm_mon=month-1, t.tm_year=year-1900;
-
-    //tm tt = tm_to_time_t_utc(&t);
-    return tm_to_time_t_utc(&t);
-}
-
-
-
-To TEST:
-printf("seconds since the Epoch: %ld\n", mktime_wrapper(1, 1, 1970));
-
-</code></pre>
-
-
-<p><strong>Note</strong>:<br>    pay attention to mac, the timezone has “0.5” hour sense.  shit. </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/28/2015-6-28-Get seconds since the Epoch ( UTC time as input parameter)/" data-id="cigm7qxsk000on8itx6rjislg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2015-5-19-LeetCode - Validate Binary Search Tree" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/05/19/2015-5-19-LeetCode - Validate Binary Search Tree/" class="article-date">
-  <time datetime="2015-05-19T03:23:32.000Z" itemprop="datePublished">2015-05-19</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/19/2015-5-19-LeetCode - Validate Binary Search Tree/">leetcode - Validate Binary Search Tree!</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> Given a binary tree, determine if it is a valid binary search tree (BST).</p>
-<p>Assume a BST is defined as follows:</p>
-<p>The left subtree of a node contains only nodes with keys less than the node’s key.</p>
-<p>The right subtree of a node contains only nodes with keys greater than the node’s key.</p>
-<p>Both the left and right subtrees must also be binary search trees.</p>
-<hr>
-<p>confused what “{1,#,2,3}” means? &gt; read more on how binary tree is serialized on OJ.</p>
-<p>OJ’s Binary Tree Serialization:</p>
-<p>The serialization of a binary tree follows a level order traversal, where ‘#’ signifies a path terminator where no node exists below.</p>
-<p>Here’s an example:</p>
-<pre><code>  <span class="number">1</span>
- / \
-<span class="number">2</span>   <span class="number">3</span>
-   /
-  <span class="number">4</span>
-   \
-    <span class="number">5</span>
-</code></pre><p>The above binary tree is serialized as “{1,2,3,#,#,4,#,#,5}”. </p>
-<h3 id="code:">code:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for a binary tree node.</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkLeftSubTree</span><span class="params">(TreeNode* left, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">NULL</span> == left) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (left-&gt;val &gt;= value) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!checkLeftSubTree(left-&gt;left, value)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!checkLeftSubTree(left-&gt;right, value)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">checkRightSubTree</span><span class="params">(TreeNode* right, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">NULL</span> == right) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (right-&gt;val &lt;= value) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!checkRightSubTree(right-&gt;left, value)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!checkRightSubTree(right-&gt;right, value)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">NULL</span> == root) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">false</span> == checkLeftSubTree(root-&gt;left, root-&gt;val))</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="literal">false</span> == checkRightSubTree(root-&gt;right, root-&gt;val))</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!isValidBST(root-&gt;left)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!isValidBST(root-&gt;right)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/19/2015-5-19-LeetCode - Validate Binary Search Tree/" data-id="cigm7qxt1000zn8iti2g3xo6n" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </section>
@@ -624,7 +609,7 @@ printf("seconds since the Epoch: %ld\n", mktime_wrapper(1, 1, 1970));
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode-c/">leetcode c++</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux-c/">linux c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets-c/">wxWidgets c++</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode-c/">leetcode c++</a><span class="category-list-count">26</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux-c/">linux c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets-c/">wxWidgets c++</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -651,7 +636,7 @@ printf("seconds since the Epoch: %ld\n", mktime_wrapper(1, 1, 1970));
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -663,11 +648,15 @@ printf("seconds since the Epoch: %ld\n", mktime_wrapper(1, 1, 1970));
       <ul>
         
           <li>
-            <a href="/2015/11/06/2015-11-6-LeetCode - invalid parentheses/">leetcode -  invalid parentheses</a>
+            <a href="/2015/11/06/2015-11-6-LeetCode - Word Pattern/">leetcode -  Word Pattern</a>
           </li>
         
           <li>
-            <a href="/2015/11/06/2015-11-6-LeetCode - Reverse Polish Notation/">leetcode -  Reverse Polish Notation.</a>
+            <a href="/2015/11/06/2015-11-6-LeetCode - Nim Game/">leetcode -  Nim Game</a>
+          </li>
+        
+          <li>
+            <a href="/2015/11/06/2015-11-6-coding test - split string by space/">leetcode -  split string by space.</a>
           </li>
         
           <li>
@@ -676,10 +665,6 @@ printf("seconds since the Epoch: %ld\n", mktime_wrapper(1, 1, 1970));
         
           <li>
             <a href="/2015/11/06/2015-11-6-LeetCode - Invert a binary tree/">leetcode -  Invert a binary tree.</a>
-          </li>
-        
-          <li>
-            <a href="/2015/09/21/hello-world/">Hello World</a>
           </li>
         
       </ul>
