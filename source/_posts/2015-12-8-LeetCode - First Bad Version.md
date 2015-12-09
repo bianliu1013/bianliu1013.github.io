@@ -16,6 +16,8 @@ You are given an API bool isBadVersion(version) which will return whether versio
 
 ### code:
 <pre><code>
+
+
 // Forward declaration of isBadVersion API.
 bool isBadVersion(int version);
 
@@ -43,4 +45,5 @@ class Solution {
         return found;
     }
 };
+
 </code></pre>

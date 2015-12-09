@@ -26,6 +26,7 @@ You may assume pattern contains only lowercase letters, and str contains lowerca
 
 ### code:
 <pre><code>
+
 class Solution {
   public:
     bool wordPattern(string pattern, string str) {

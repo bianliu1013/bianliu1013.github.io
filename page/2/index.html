@@ -65,6 +65,130 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-2015-11-6-LeetCode - invalid parentheses" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/06/2015-11-6-LeetCode - invalid parentheses/" class="article-date">
+  <time datetime="2015-11-06T03:23:32.000Z" itemprop="datePublished">2015-11-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/06/2015-11-6-LeetCode - invalid parentheses/">leetcode -  invalid parentheses</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.</p>
+<p>Note: The input string may contain letters other than the parentheses ( and ).</p>
+<h2 id="Examples:">Examples:</h2><p>“()())()” -&gt; [“()()()”, “(())()”]<br>“(a)())()” -&gt; [“(a)()()”, “(a())()”]<br>“)(“ -&gt; [“”]</p>
+<hr>
+<h3 id="code:">code:</h3><pre><code>
+class Solution {
+    int sum_all;
+  public:
+    vector<string> removeInvalidParentheses(string s) {
+        vector<string> results;
+
+        sum_all = sum(s);
+        string cur_result = "";
+        removeDsf(s, 0, cur_result, results);
+        sort(results.begin(), results.end());
+        results.erase(unique(results.begin(), results.end()), results.end());
+
+        if (results.size() == 0 && s.length() > 0) {
+            results.push_back("");
+        }
+        return results;
+    }
+
+    int sum(string str) {
+        int c = 0;
+        int sum = 0;
+        for (auto i : str) {
+            if (i == '(') {
+                c++;
+            } else if (i == ')') {
+                c--;
+                if (c == -1) {
+                    c = 0;
+                } else if (c >= 0) {
+                    sum++;
+                }
+            }
+        }
+        return sum;
+    }
+
+    bool invalid(string cur_result) {
+        int c = 0;
+        for (auto i : cur_result) {
+            if (i == '(') {
+                c++;
+            } else if (i == ')') {
+                c--;
+            }
+            if ( c < 0) {
+                return false;
+            }
+        }
+        return c == 0 && sum(cur_result) == sum_all;
+    }
+
+    void removeDsf(string s, int l_count, string& cur_result, vector<string>& results) {
+        if (l_count < 0) {
+            return;
+        }
+
+        if (s.length() == 0) {
+            if (invalid(cur_result)) {
+                results.push_back(cur_result);
+            }
+            return;
+        }
+
+
+        if (s.at(0) == '(' || s.at(0) == ')') {
+            std::string s0 = s.substr(1, s.length() - 1);
+            string new_result = cur_result;
+            removeDsf(s0,  l_count, new_result, results);
+
+            l_count += s.at(0) == '(' ? 1 : -1;
+            new_result = cur_result + s.at(0);
+            removeDsf(s0, l_count, new_result, results);
+        } else {
+            cur_result += s.at(0);
+            std::string s0 = s.substr(1, s.length() - 1);
+            removeDsf(s0, l_count, cur_result, results);
+        }
+    }
+};
+</string></string></string></code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - invalid parentheses/" data-id="cigm7qxtz001on8it0f4a9d19" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/09/21/hello-world/" class="article-date">
@@ -206,6 +330,60 @@
 
 
   
+    <article id="post-2015-6-28-LeetCode - Combinations" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/28/2015-6-28-LeetCode - Combinations/" class="article-date">
+  <time datetime="2015-06-28T03:23:32.000Z" itemprop="datePublished">2015-06-28</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/28/2015-6-28-LeetCode - Combinations/">leetcode -  Combinations!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> Given two integers n and k, return all possible combinations of k numbers out of 1 … n.</p>
+<p>For example,</p>
+<p>If n = 4 and k = 2, a solution is: </p>
+<p>Return </p>
+<hr>
+<pre><code>[
+[<span class="number">2</span>,<span class="number">4</span>],
+[<span class="number">3</span>,<span class="number">4</span>],
+[<span class="number">2</span>,<span class="number">3</span>],
+[<span class="number">1</span>,<span class="number">2</span>],
+[<span class="number">1</span>,<span class="number">3</span>],
+[<span class="number">1</span>,<span class="number">4</span>],
+]
+</code></pre><hr>
+<h3 id="code:">code:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; combine_sub(<span class="keyword">int</span> b, <span class="keyword">int</span> e, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a;</span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = b; i &lt;= e; i++) &#123;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a_i = &#123; i &#125;;</span><br><span class="line">                a.push_back(a_i);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = b; i &lt;= e - k + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a_left = combine_sub(i + <span class="number">1</span>, e, k - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (a_left.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">auto</span> j : a_left) &#123;</span><br><span class="line">                    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ai = &#123; i &#125;;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">auto</span> l : j) &#123;</span><br><span class="line">                        ai.push_back(l);</span><br><span class="line">                    &#125;</span><br><span class="line">                    a.push_back(ai);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; combine(<span class="keyword">int</span> n, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a = combine_sub(<span class="number">1</span>, n, k);</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/06/28/2015-6-28-LeetCode - Combinations/" data-id="cigm7qxsi000mn8itx76bcqfj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2015-6-28-LeetCode - Pascal&#39;s Triangle" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/06/28/2015-6-28-LeetCode - Pascal's Triangle/" class="article-date">
@@ -277,60 +455,6 @@ class Solution {
     </div>
     <footer class="article-footer">
       <a data-url="http://yoursite.com/2015/06/28/2015-6-28-LeetCode - Pascal's Triangle/" data-id="cigm7qxsc000kn8it9oes3b2c" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2015-6-28-LeetCode - Combinations" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/28/2015-6-28-LeetCode - Combinations/" class="article-date">
-  <time datetime="2015-06-28T03:23:32.000Z" itemprop="datePublished">2015-06-28</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/28/2015-6-28-LeetCode - Combinations/">leetcode -  Combinations!</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> Given two integers n and k, return all possible combinations of k numbers out of 1 … n.</p>
-<p>For example,</p>
-<p>If n = 4 and k = 2, a solution is: </p>
-<p>Return </p>
-<hr>
-<pre><code>[
-[<span class="number">2</span>,<span class="number">4</span>],
-[<span class="number">3</span>,<span class="number">4</span>],
-[<span class="number">2</span>,<span class="number">3</span>],
-[<span class="number">1</span>,<span class="number">2</span>],
-[<span class="number">1</span>,<span class="number">3</span>],
-[<span class="number">1</span>,<span class="number">4</span>],
-]
-</code></pre><hr>
-<h3 id="code:">code:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; combine_sub(<span class="keyword">int</span> b, <span class="keyword">int</span> e, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a;</span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (k == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = b; i &lt;= e; i++) &#123;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a_i = &#123; i &#125;;</span><br><span class="line">                a.push_back(a_i);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = b; i &lt;= e - k + <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a_left = combine_sub(i + <span class="number">1</span>, e, k - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (a_left.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">auto</span> j : a_left) &#123;</span><br><span class="line">                    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ai = &#123; i &#125;;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">auto</span> l : j) &#123;</span><br><span class="line">                        ai.push_back(l);</span><br><span class="line">                    &#125;</span><br><span class="line">                    a.push_back(ai);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; combine(<span class="keyword">int</span> n, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; a = combine_sub(<span class="number">1</span>, n, k);</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/28/2015-6-28-LeetCode - Combinations/" data-id="cigm7qxsi000mn8itx76bcqfj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -532,55 +656,6 @@ class Solution {
 
 
   
-    <article id="post-2015-6-7-LeetCode - Isomorphic Strings" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/07/2015-6-7-LeetCode - Isomorphic Strings/" class="article-date">
-  <time datetime="2015-06-07T03:23:32.000Z" itemprop="datePublished">2015-06-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/07/2015-6-7-LeetCode - Isomorphic Strings/">leetcode -  Isomorphic Strings!</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Given two strings s and t, determine if they are isomorphic.</p>
-<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
-<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two</p>
-<p>characters may map to the same character but a character may map to itself.</p>
-<p>For example,</p>
-<p>Given <font color="red">“egg”, “add”</font>, return true.</p>
-<p>Given <font color="red">“foo”, “bar”</font>, return false.</p>
-<p>Given <font color="red">“paper”, “title”</font>, return true.</p>
-<p>Note:<br>You may assume both s and t have the same length.</p>
-<h3 id="code:">code:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isIsomorphic_sub</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="keyword">char</span>, <span class="keyword">char</span>&gt; smap;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = smap.find(s[i]);</span><br><span class="line">            <span class="keyword">if</span> (it == smap.end()) &#123;</span><br><span class="line">                smap[s[i]] = t[i];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (it-&gt;second != t[i]) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isIsomorphic</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isIsomorphic_sub(s, t) &amp;&amp; isIsomorphic_sub(t, s);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/07/2015-6-7-LeetCode - Isomorphic Strings/" data-id="cigm7qxrx0009n8itrhmrw2n3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -594,7 +669,7 @@ class Solution {
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode-c/">leetcode c++</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux-c/">linux c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets-c/">wxWidgets c++</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode-c/">leetcode c++</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux-c/">linux c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets-c/">wxWidgets c++</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -621,7 +696,7 @@ class Solution {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -631,6 +706,10 @@ class Solution {
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/12/09/2015-12-9-LeetCode - Ugly Number/">leetcode -  Ugly number.</a>
+          </li>
         
           <li>
             <a href="/2015/12/08/2015-12-8-LeetCode - First Bad Version/">leetcode -  First Bad Version</a>
@@ -645,11 +724,7 @@ class Solution {
           </li>
         
           <li>
-            <a href="/2015/11/06/2015-11-6-LeetCode - Nim Game/">leetcode -  Nim Game</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/06/2015-11-6-LeetCode - Word Pattern/">leetcode -  Word Pattern</a>
+            <a href="/2015/11/06/2015-11-6-coding test - split string by space/">leetcode -  split string by space.</a>
           </li>
         
       </ul>
