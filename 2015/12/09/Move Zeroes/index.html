@@ -3,27 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>leetcode - Word Break! | Happy every day</title>
+  <title>leetcode -   Move Zeroes | Happy every day</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
-For example, given
-s = “leetcode”,
-dict = [“leet”, “co">
+  <meta name="description" content="Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.
+For example, given nums = [0, 1, 0, 3, 12], after calling your fun">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode - Word Break!">
-<meta property="og:url" content="http://yoursite.com/2015/06/03/2015-6-3-LeetCode - Word Break/index.html">
+<meta property="og:title" content="leetcode -   Move Zeroes">
+<meta property="og:url" content="http://yoursite.com/2015/12/09/Move Zeroes/index.html">
 <meta property="og:site_name" content="Happy every day">
-<meta property="og:description" content="Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
-For example, given
-s = “leetcode”,
-dict = [“leet”, “co">
-<meta property="og:updated_time" content="2015-09-13T14:57:49.689Z">
+<meta property="og:description" content="Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.
+For example, given nums = [0, 1, 0, 3, 12], after calling your fun">
+<meta property="og:updated_time" content="2015-12-09T14:41:50.717Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode - Word Break!">
-<meta name="twitter:description" content="Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
-For example, given
-s = “leetcode”,
-dict = [“leet”, “co">
+<meta name="twitter:title" content="leetcode -   Move Zeroes">
+<meta name="twitter:description" content="Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.
+For example, given nums = [0, 1, 0, 3, 12], after calling your fun">
   
     <link rel="alternative" href="/atom.xml" title="Happy every day" type="application/atom+xml">
   
@@ -73,10 +67,10 @@ dict = [“leet”, “co">
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2015-6-3-LeetCode - Word Break" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Move Zeroes" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/06/03/2015-6-3-LeetCode - Word Break/" class="article-date">
-  <time datetime="2015-06-03T03:23:32.000Z" itemprop="datePublished">2015-06-03</time>
+    <a href="/2015/12/09/Move Zeroes/" class="article-date">
+  <time datetime="2015-12-09T03:23:32.000Z" itemprop="datePublished">2015-12-09</time>
 </a>
     
   <div class="article-category">
@@ -91,7 +85,7 @@ dict = [“leet”, “co">
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode - Word Break!
+      leetcode -   Move Zeroes
     </h1>
   
 
@@ -99,17 +93,20 @@ dict = [“leet”, “co">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.</p>
-<p>For example, given</p>
-<p>s = <font color="red">“leetcode”</font>,</p>
-<p>dict = <font color="red">[“leet”, “code”]</font>.</p>
-<p>Return true because “leetcode” can be segmented as “leet code”. </p>
-<hr>
-<h3 id="code:">code:</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">wordBreak</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">unordered_set</span>&lt;<span class="built_in">string</span>&gt;&amp; wordDict)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (wordDict.size() == <span class="number">0</span> &amp;&amp; s.size() != <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (wordDict.size() == <span class="number">0</span> &amp;&amp; s.size() == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; dpArray(s.length(), <span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= s.length(); j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> ((i - <span class="number">1</span>) &gt;= <span class="number">0</span> &amp;&amp; <span class="literal">false</span> == dpArray[i - <span class="number">1</span>]) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (wordDict.find(s.substr(i, j - i)) != wordDict.end()) &#123;</span><br><span class="line">                    dpArray[j - <span class="number">1</span>] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dpArray[s.length() - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <p> Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p>For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].</p>
+<p>Note:</p>
+<pre><code>You must <span class="built_in">do</span> this <span class="operator">in</span>-place <span class="keyword">without</span> making <span class="operator">a</span> copy <span class="operator">of</span> <span class="operator">the</span> array.
+Minimize <span class="operator">the</span> total <span class="built_in">number</span> <span class="operator">of</span> operations.
+</code></pre><h3 id="code:">code:</h3><pre><code>
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        if(nums.size() <= 1="" 1)="" return;="" int="" f="0;" s="1;" temp="0;" while(s="" <="" nums.size()="" &&="" nums.size())="" {="" compare="" if(nums[f]="=" 0){="" if(nums[s]="" !="0){" nums[f]="nums[s];" nums[s]="temp;" +="1;" }="" else{="" 0,="" };="" code=""></=></int></code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/03/2015-6-3-LeetCode - Word Break/" data-id="cihyws9nx000kvgith8uqhdsc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/09/Move Zeroes/" data-id="cihyxcflr0000acit9glzhawq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -118,19 +115,19 @@ dict = [“leet”, “co">
     
 <nav id="article-nav">
   
-    <a href="/2015/06/04/2015-6-4-LeetCode - Reverse Linked List II/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/12/09/Find the Duplicate Number/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          leetcode -  Reverse a linked list!
+          leetcode -   Find the Duplicate Number
         
       </div>
     </a>
   
   
-    <a href="/2015/05/28/2015-6-28-Get seconds since the Epoch ( UTC time as input parameter)/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/12/09/2015-12-9-LeetCode - Ugly Number/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Get seconds since the Epoch ( UTC time as input parameter)  !</div>
+      <div class="article-nav-title">leetcode -  Ugly number.</div>
     </a>
   
 </nav>

@@ -107,9 +107,9 @@
 
 
   
-    <article id="post-2015-5-17-LeetCode - Reverse Words in a String" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2015-5-17-LeetCode - Maximum Depth of Binary Tree" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/05/17/2015-5-17-LeetCode - Reverse Words in a String/" class="article-date">
+    <a href="/2015/05/17/2015-5-17-LeetCode - Maximum Depth of Binary Tree/" class="article-date">
   <time datetime="2015-05-17T03:23:32.000Z" itemprop="datePublished">2015-05-17</time>
 </a>
     
@@ -125,7 +125,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/17/2015-5-17-LeetCode - Reverse Words in a String/">leetcode - Reverse Words in a String!</a>
+      <a class="article-title" href="/2015/05/17/2015-5-17-LeetCode - Maximum Depth of Binary Tree/">leetcode - Maximum Depth of Binary Tree!</a>
     </h1>
   
 
@@ -133,63 +133,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Given an input string, reverse the string word by word.</p>
-<p>For example,</p>
-<p>Given s = “the sky is blue”,</p>
-<p>return “blue is sky the”.</p>
-<p>Update (2015-02-12):</p>
-<p>For C programmers: Try to solve it in-place in O(1) space. </p>
+        <p>Given a binary tree, find its maximum depth.</p>
+<p>The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
 <hr>
-<h3 id="code">code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">reverseWords</span><span class="params">(<span class="built_in">string</span> &amp;s)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> s_temp;</span><br><span class="line">        <span class="keyword">int</span> count = s.length() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> bFound = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(count &gt;= <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// trim</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="string">' '</span> == s[count] &amp;&amp; -<span class="number">1</span> == bFound)</span><br><span class="line">            &#123;</span><br><span class="line">                count--;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(<span class="string">' '</span> == s[count])  <span class="comment">// found space</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(s_temp.length() != <span class="number">0</span>)</span><br><span class="line">                   s_temp += <span class="string">' '</span>;  <span class="comment">// add space </span></span><br><span class="line">                s_temp += s.substr(count+<span class="number">1</span>, bFound - count);</span><br><span class="line">                bFound = -<span class="number">1</span>; <span class="comment">// roll back</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>  <span class="comment">// found character</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="number">0</span> == count &amp;&amp; -<span class="number">1</span> == bFound) <span class="comment">// only one character</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(s_temp.length() != <span class="number">0</span>)</span><br><span class="line">                        s_temp += <span class="string">' '</span>;  <span class="comment">// add space </span></span><br><span class="line">                    s_temp += <span class="built_in">std</span>::<span class="built_in">string</span>(<span class="number">1</span>, s[<span class="number">0</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(<span class="number">0</span> == count &amp;&amp; -<span class="number">1</span> != bFound)  <span class="comment">// 0 position and have other words</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span>(s_temp.length() != <span class="number">0</span>)</span><br><span class="line">                        s_temp += <span class="string">' '</span>;  <span class="comment">// add space                    </span></span><br><span class="line">                   s_temp += s.substr(<span class="number">0</span>, bFound + <span class="number">1</span>); </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(-<span class="number">1</span> == bFound)  <span class="comment">// found first non-words</span></span><br><span class="line">                &#123;</span><br><span class="line">                    bFound = count;</span><br><span class="line">                &#125;</span><br><span class="line">                count--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        s = s_temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="code">code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for binary tree</span><br><span class="line"> * struct TreeNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     TreeNode *left;</span><br><span class="line"> *     TreeNode *right;</span><br><span class="line"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxDepth</span><span class="params">(TreeNode *root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left == <span class="literal">NULL</span> &amp;&amp; root-&gt;right == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> lMax = maxDepth(root-&gt;left);</span><br><span class="line">        <span class="keyword">int</span> rMax = maxDepth(root-&gt;right);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + (lMax &gt;= rMax? lMax: rMax);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/17/2015-5-17-LeetCode - Reverse Words in a String/" data-id="cihyws9pb001bvgitw0n2j4v2" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2015-5-17-LeetCode - Set Matrix Zeroes" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/05/17/2015-5-17-LeetCode - Set Matrix Zeroes/" class="article-date">
-  <time datetime="2015-05-17T03:23:32.000Z" itemprop="datePublished">2015-05-17</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/17/2015-5-17-LeetCode - Set Matrix Zeroes/">leetcode - Set Matrix Zeroes!</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.<br>click to show.<br><strong>Follow up</strong>:</p>
-<p>Did you use extra space?</p>
-<p>A straight forward solution using O(mn) space is probably a bad idea.</p>
-<p>A simple improvement uses O(m + n) space, but still not the best solution.<br>Could you devise a constant space solution?</p>
-<hr>
-<h3 id="code">code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setZeroes</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (matrix.size() == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; hList;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vList;</span><br><span class="line">        hList.resize(matrix.size(), <span class="number">0</span>);</span><br><span class="line">        vList.resize(matrix[<span class="number">0</span>].size(), <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">0</span>; i &lt; matrix.size(); i++) &#123;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; it = matrix[i];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> j = <span class="number">0</span>; j &lt; it.size(); j++) &#123;</span><br><span class="line">                <span class="keyword">int</span> value = it[j];</span><br><span class="line">                <span class="keyword">if</span> (value == <span class="number">0</span>) &#123;</span><br><span class="line">                    hList[i] = <span class="number">1</span>;</span><br><span class="line">                    vList[j] = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i = <span class="number">0</span>; i &lt; matrix.size(); i++) &#123;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; it = matrix[i];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> j = <span class="number">0</span>; j &lt; it.size(); j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (hList[i] == <span class="number">1</span> || vList[j] == <span class="number">1</span>) &#123;</span><br><span class="line">                    it[j] = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/17/2015-5-17-LeetCode - Set Matrix Zeroes/" data-id="cihyws9p10019vgitv2p5bqur" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/17/2015-5-17-LeetCode - Maximum Depth of Binary Tree/" data-id="cihyws9pb001fvgitdqajjvk7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -301,78 +252,6 @@
 
 
   
-    <article id="post-2014-08-01-all things learned from UVC 1(libusb &amp; libusbk)" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/" class="article-date">
-  <time datetime="2014-08-01T03:23:32.000Z" itemprop="datePublished">2014-08-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/uvc-c/">uvc c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/">all things learned from UVC1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><br></p>
-<h2 id="Libusb_and_libusbK_的关系">Libusb and libusbK 的关系</h2><blockquote>
-<p>Libusbk是libusb的超集。同时支持libusb, winusb, libusbk三种驱动模式。</p>
-</blockquote>
-<p><br></p>
-<h2 id="环境搭建">环境搭建</h2><blockquote>
-<p>在 <a href="http://sourceforge.net/projects/libusbk" target="_blank" rel="external">http://sourceforge.net/projects/libusbk</a> 上可以拿到最新的 libusbk 库， setup.exe 会装好运行环境，driver installer creator Wizard 等工具。</p>
-</blockquote>
-<p><br></p>
-<h2 id="如何使用">如何使用</h2><blockquote>
-<p>用 “driver installer creator Wizard” 更新自己的driver，如果是UVC设备，就要把自带的usbvideo驱动换成 libusbk的驱动。更新成功后，device manager 里会有libusbk的一栏。</p>
-</blockquote>
-<p><br></p>
-<h2 id="Sample">Sample</h2><blockquote>
-<p>C:\libusbK-dev-kit\examples 里有自带的各种sample， 默认是vs2008的工程，如没有2008环境，自己可以改project文件。 Sample写的都很舒服， 一般只需要更把EXAMPLE_VID，EXAMPLE_VID的值改成自己设备的， 把EXAMPLES_USE_BENCHMARK_CONFIGURE 设为0 就OK。 体验体验吧，从设备里拿到第一个字节的冲动。：）</p>
-</blockquote>
-<p><br></p>
-<h2 id="如何验证？">如何验证？</h2><blockquote>
-<p>简单的验证，可以用usblyzer抓包工具 和你的sample结果进行对比，看是否一致。 Usblyzer一次抓包buffer是有限制的（默认16k？），自己摸索的改成最大。</p>
-</blockquote>
-<p><br></p>
-<h2 id="为何选择libusbk">为何选择libusbk</h2><blockquote>
-<p>因为硬件设计，每个isopackage 的头都标示frame的信息（非标准视频文件头），而我又需要这些信息，libusb不满足，详情见我的<a href="http://libusb.6.n5.nabble.com/how-to-get-the-size-of-each-packet-td5663684.html" target="_blank" rel="external">request</a></p>
-</blockquote>
-<p><br></p>
-<h2 id="libusk有什么不足">libusk有什么不足</h2><blockquote>
-<p>曾经见一位仁兄抱怨，是不是他是第一个用这个库的人。。现在用下来，有时候也真有同感，不过好在库的开发者都很好，support都很nice。几轮回合下来（<a href="http://libusb.6.n5.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=334628），看着最新的release" target="_blank" rel="external">http://libusb.6.n5.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=334628），看着最新的release</a> note里，好几个 reported by peter， 有那么点成就感（IT行业摸爬5年，终于为开源做点贡献），也有担心—蓝屏的问题还没有solution。将来。。。 Anyway, keep moving on.</p>
-</blockquote>
-<p><br></p>
-<h2 id="2005如何编译_libusbk">2005如何编译 libusbk</h2><blockquote>
-<p>在 <a href="http://sourceforge.net/projects/libusbk" target="_blank" rel="external">http://sourceforge.net/projects/libusbk</a> 下到最新的source， 在\src\lib下面有libusbK_lib.vcproj，修改Version=”8.00”， 然后build，应该会报告两个错， error code找不到，可以google标准的windows error code，直接用数字代替。重新编译，就能得到静态库了。</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/" data-id="cihyws9m90000vgit2ttmgc86" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-2014-08-01-all things learned from UVC 2(libusb &amp; libusbk)" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/08/01/2014-08-01-all things learned from UVC 2(libusb & libusbk)/" class="article-date">
@@ -451,6 +330,78 @@
 
 
   
+    <article id="post-2014-08-01-all things learned from UVC 1(libusb &amp; libusbk)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/" class="article-date">
+  <time datetime="2014-08-01T03:23:32.000Z" itemprop="datePublished">2014-08-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uvc-c/">uvc c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/">all things learned from UVC1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><br></p>
+<h2 id="Libusb_and_libusbK_的关系">Libusb and libusbK 的关系</h2><blockquote>
+<p>Libusbk是libusb的超集。同时支持libusb, winusb, libusbk三种驱动模式。</p>
+</blockquote>
+<p><br></p>
+<h2 id="环境搭建">环境搭建</h2><blockquote>
+<p>在 <a href="http://sourceforge.net/projects/libusbk" target="_blank" rel="external">http://sourceforge.net/projects/libusbk</a> 上可以拿到最新的 libusbk 库， setup.exe 会装好运行环境，driver installer creator Wizard 等工具。</p>
+</blockquote>
+<p><br></p>
+<h2 id="如何使用">如何使用</h2><blockquote>
+<p>用 “driver installer creator Wizard” 更新自己的driver，如果是UVC设备，就要把自带的usbvideo驱动换成 libusbk的驱动。更新成功后，device manager 里会有libusbk的一栏。</p>
+</blockquote>
+<p><br></p>
+<h2 id="Sample">Sample</h2><blockquote>
+<p>C:\libusbK-dev-kit\examples 里有自带的各种sample， 默认是vs2008的工程，如没有2008环境，自己可以改project文件。 Sample写的都很舒服， 一般只需要更把EXAMPLE_VID，EXAMPLE_VID的值改成自己设备的， 把EXAMPLES_USE_BENCHMARK_CONFIGURE 设为0 就OK。 体验体验吧，从设备里拿到第一个字节的冲动。：）</p>
+</blockquote>
+<p><br></p>
+<h2 id="如何验证？">如何验证？</h2><blockquote>
+<p>简单的验证，可以用usblyzer抓包工具 和你的sample结果进行对比，看是否一致。 Usblyzer一次抓包buffer是有限制的（默认16k？），自己摸索的改成最大。</p>
+</blockquote>
+<p><br></p>
+<h2 id="为何选择libusbk">为何选择libusbk</h2><blockquote>
+<p>因为硬件设计，每个isopackage 的头都标示frame的信息（非标准视频文件头），而我又需要这些信息，libusb不满足，详情见我的<a href="http://libusb.6.n5.nabble.com/how-to-get-the-size-of-each-packet-td5663684.html" target="_blank" rel="external">request</a></p>
+</blockquote>
+<p><br></p>
+<h2 id="libusk有什么不足">libusk有什么不足</h2><blockquote>
+<p>曾经见一位仁兄抱怨，是不是他是第一个用这个库的人。。现在用下来，有时候也真有同感，不过好在库的开发者都很好，support都很nice。几轮回合下来（<a href="http://libusb.6.n5.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=334628），看着最新的release" target="_blank" rel="external">http://libusb.6.n5.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=334628），看着最新的release</a> note里，好几个 reported by peter， 有那么点成就感（IT行业摸爬5年，终于为开源做点贡献），也有担心—蓝屏的问题还没有solution。将来。。。 Anyway, keep moving on.</p>
+</blockquote>
+<p><br></p>
+<h2 id="2005如何编译_libusbk">2005如何编译 libusbk</h2><blockquote>
+<p>在 <a href="http://sourceforge.net/projects/libusbk" target="_blank" rel="external">http://sourceforge.net/projects/libusbk</a> 下到最新的source， 在\src\lib下面有libusbK_lib.vcproj，修改Version=”8.00”， 然后build，应该会报告两个错， error code找不到，可以google标准的windows error code，直接用数字代替。重新编译，就能得到静态库了。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/" data-id="cihyws9m90000vgit2ttmgc86" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
@@ -464,7 +415,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode-c/">leetcode c++</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux-c/">linux c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets-c/">wxWidgets c++</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode-c/">leetcode c++</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux-c/">linux c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets-c/">wxWidgets c++</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -491,7 +442,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -503,19 +454,19 @@
       <ul>
         
           <li>
+            <a href="/2015/12/09/Find the Duplicate Number/">leetcode -   Find the Duplicate Number</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/09/Move Zeroes/">leetcode -   Move Zeroes</a>
+          </li>
+        
+          <li>
             <a href="/2015/12/09/2015-12-9-LeetCode - Ugly Number/">leetcode -  Ugly number.</a>
           </li>
         
           <li>
             <a href="/2015/12/08/2015-12-8-LeetCode - First Bad Version/">leetcode -  First Bad Version</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/09/Move Zeroes/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/09/Find the Duplicate Number/">(no title)</a>
           </li>
         
           <li>

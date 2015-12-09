@@ -65,6 +65,124 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Find the Duplicate Number" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/09/Find the Duplicate Number/" class="article-date">
+  <time datetime="2015-12-09T03:23:32.000Z" itemprop="datePublished">2015-12-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/09/Find the Duplicate Number/">leetcode -   Find the Duplicate Number</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.</p>
+<p>Note:</p>
+<pre><code>You must<span class="instruction"> not </span>modify the<span class="instruction"> array </span>(assume the<span class="instruction"> array </span>is read only<span class="function">)</span>.
+You must use only constant,<span class="function"> O(</span>1<span class="function">)</span> extra space.
+Your runtime complexity should be less than<span class="function"> O(</span>n2<span class="function">)</span>.
+There is only one duplicate number in the array, but it could be repeated more than once.
+</code></pre><h3 id="code:">code:</h3><pre><code>
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int low = 0;
+        int high = nums.size() - 1;
+        int mid = 0;
+
+        while(low < high)
+        {
+            mid = (low + high) / 2;
+            int small_count = 0;
+            for(size_t i = 0; i < nums.size(); i++)
+            {
+                if(nums[i] <= mid)="" small_count++;="" }="" if(small_count=""> mid)  // duplicated num exist in lower side
+                high = mid;
+            else
+                low = mid + 1;
+        }
+
+        return low;
+    }
+};
+</=></int></code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/12/09/Find the Duplicate Number/" data-id="cihyxco490002acit52qud090" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Move Zeroes" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/09/Move Zeroes/" class="article-date">
+  <time datetime="2015-12-09T03:23:32.000Z" itemprop="datePublished">2015-12-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/09/Move Zeroes/">leetcode -   Move Zeroes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p>For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].</p>
+<p>Note:</p>
+<pre><code>You must <span class="built_in">do</span> this <span class="operator">in</span>-place <span class="keyword">without</span> making <span class="operator">a</span> copy <span class="operator">of</span> <span class="operator">the</span> array.
+Minimize <span class="operator">the</span> total <span class="built_in">number</span> <span class="operator">of</span> operations.
+</code></pre><h3 id="code:">code:</h3><pre><code>
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        if(nums.size() <= 1="" 1)="" return;="" int="" f="0;" s="1;" temp="0;" while(s="" <="" nums.size()="" &&="" nums.size())="" {="" compare="" if(nums[f]="=" 0){="" if(nums[s]="" !="0){" nums[f]="nums[s];" nums[s]="temp;" +="1;" }="" else{="" 0,="" };="" code=""></=></int></code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/12/09/Move Zeroes/" data-id="cihyxcflr0000acit9glzhawq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-2015-12-9-LeetCode - Ugly Number" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/12/09/2015-12-9-LeetCode - Ugly Number/" class="article-date">
@@ -164,115 +282,6 @@ class Solution {
     </div>
     <footer class="article-footer">
       <a data-url="http://yoursite.com/2015/12/08/2015-12-8-LeetCode - First Bad Version/" data-id="cihyws9pl001svgitcb8p6mza" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Move Zeroes" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/09/Move Zeroes/" class="article-date">
-  <time datetime="2015-11-09T12:34:53.956Z" itemprop="datePublished">2015-11-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.</p>
-<p>For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].</p>
-<p>Note:</p>
-<pre><code>You must <span class="built_in">do</span> this <span class="operator">in</span>-place <span class="keyword">without</span> making <span class="operator">a</span> copy <span class="operator">of</span> <span class="operator">the</span> array.
-Minimize <span class="operator">the</span> total <span class="built_in">number</span> <span class="operator">of</span> operations.
-</code></pre><p>class Solution {<br>public:<br>    void moveZeroes(vector<int>&amp; nums) {<br>        if(nums.size() &lt;= 1)<br>            return;</int></p>
-<pre><code>    <span class="keyword">int</span> f = <span class="number">0</span>;
-    <span class="keyword">int</span> s = <span class="number">1</span>;
-    <span class="keyword">int</span> temp = <span class="number">0</span>;
-
-    <span class="keyword">while</span>(s &lt; nums.size() &amp;&amp; f &lt; nums.size())
-    {
-        <span class="comment">// compare</span>
-        <span class="keyword">if</span>(nums[f] == <span class="number">0</span>){
-            <span class="keyword">if</span>(nums[s] != <span class="number">0</span>){
-                temp = nums[f];
-                nums[f] = nums[s];
-                nums[s] = temp;
-                f += <span class="number">1</span>;
-                s += <span class="number">1</span>;
-            }
-            <span class="keyword">else</span>{  <span class="comment">// 0, 0, 1</span>
-                s += <span class="number">1</span>;
-            }
-        }
-        <span class="keyword">else</span>{
-            f += <span class="number">1</span>;
-            s += <span class="number">1</span>;
-        }
-    }
-}
-</code></pre><p>};</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/09/Move Zeroes/" data-id="cihyws9nd0006vgitqkyoclit" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Find the Duplicate Number" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/09/Find the Duplicate Number/" class="article-date">
-  <time datetime="2015-11-09T12:07:35.592Z" itemprop="datePublished">2015-11-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.</p>
-<p>Note:</p>
-<pre><code>You must<span class="instruction"> not </span>modify the<span class="instruction"> array </span>(assume the<span class="instruction"> array </span>is read only<span class="function">)</span>.
-You must use only constant,<span class="function"> O(</span>1<span class="function">)</span> extra space.
-Your runtime complexity should be less than<span class="function"> O(</span>n2<span class="function">)</span>.
-There is only one duplicate number in the array, but it could be repeated more than once.
-</code></pre><p>class Solution {<br>public:<br>    int findDuplicate(vector<int>&amp; nums) {<br>        int low = 0;<br>        int high = nums.size() - 1;<br>        int mid = 0;</int></p>
-<pre><code>    <span class="keyword">while</span>(low &lt; high)
-    {
-        mid = (low + high) / <span class="number">2</span>;
-        <span class="keyword">int</span> small_count = <span class="number">0</span>;
-        <span class="keyword">for</span>(<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; nums.size(); i++)
-        {
-            <span class="keyword">if</span>(nums[i] &lt;= mid)
-                small_count++;
-        }
-        <span class="keyword">if</span>(small_count &gt; mid)  <span class="comment">// duplicated num exist in lower side</span>
-            high = mid;
-        <span class="keyword">else</span>
-            low = mid + <span class="number">1</span>;
-    }
-
-    <span class="keyword">return</span> low;
-}
-</code></pre><p>};</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/09/Find the Duplicate Number/" data-id="cihyws9nd0007vgitfr575aml" class="article-share-link">Share</a>
       
       
     </footer>
@@ -504,74 +513,6 @@ class Solution {
 
 
   
-    <article id="post-2015-11-6-LeetCode - Longest Increasing Subsequence" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/06/2015-11-6-LeetCode - Longest Increasing Subsequence/" class="article-date">
-  <time datetime="2015-11-06T03:23:32.000Z" itemprop="datePublished">2015-11-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/06/2015-11-6-LeetCode - Longest Increasing Subsequence/">leetcode -  longest increasing subsequence</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Given an unsorted array of integers, find the length of longest increasing subsequence.</p>
-<p>For example,<br>Given [10, 9, 2, 5, 3, 7, 101, 18],<br>The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4. Note that there may be more than one LIS combination, it is only necessary for you to return the length.</p>
-<p>Your algorithm should run in O(n2) complexity.</p>
-<p>Follow up: Could you improve it to O(n log n) time complexity? </p>
-<h3 id="code:">code:</h3><pre><code>
-class Solution {
-  public:
-    int lengthOfLIS(vector<int>& nums) {
-        int max_length = 1;
-        if (nums.size() <= 1)="" {="" return="" nums.size();="" }="" std::vector<int=""> matrics(nums.size(), 1);
-        for (int i = 0; i < nums.size(); i++) {
-            for (int j = i + 1; j < nums.size(); j++) {
-                if (nums[j] > nums[i]) {
-                    if (nums[j] > nums[j - 1] && nums[j - 1] > nums[i]) {
-                        matrics[j] = matrics[j - 1] + 1;
-                        max_length = max(max_length, matrics[j]);
-                    } else {
-                        matrics[j] = max(matrics[i] + 1, matrics[j]);
-                        max_length = max(max_length, matrics[j]);
-                    }
-                } else {
-                }
-            }
-        }
-
-        return max_length;
-    }
-};
-</=></int></code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Longest Increasing Subsequence/" data-id="cihyws9q50024vgitvdfjvqu7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-2015-11-6-LeetCode - Invert a binary tree" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/11/06/2015-11-6-LeetCode - Invert a binary tree/" class="article-date">
@@ -770,6 +711,95 @@ class Solution {
 
 
   
+    <article id="post-2015-11-6-LeetCode - Reverse Polish Notation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/06/2015-11-6-LeetCode - Reverse Polish Notation/" class="article-date">
+  <time datetime="2015-11-06T03:23:32.000Z" itemprop="datePublished">2015-11-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/06/2015-11-6-LeetCode - Reverse Polish Notation/">leetcode -  Reverse Polish Notation.</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Evaluate the value of an arithmetic expression in Reverse Polish Notation.</p>
+<p>Valid operators are +, -, *, /. Each operand may be an integer or another expression.</p>
+<p>Some examples:</p>
+<p>  [“2”, “1”, “+”, “3”, “<em>“] -&gt; ((2 + 1) </em> 3) -&gt; 9<br>  [“4”, “13”, “5”, “/“, “+”] -&gt; (4 + (13 / 5)) -&gt; 6</p>
+<h3 id="code:">code:</h3><pre><code>
+class Solution
+{
+public:
+    int evalRPN(vector<string>& tokens) {
+        if(tokens.size() == 0)
+            return 0;
+
+        std::stack<int> stack;
+        for(auto i: tokens)
+        {
+
+            if(string::npos != i.find("+") && i.length() == 1){
+                int i_s = stack.top();
+                stack.pop();
+                int i_f = stack.top();
+                stack.pop();
+                stack.push(i_s + i_f);
+            }else if(string::npos != i.find("-") && i.length() == 1){
+                int i_s = stack.top();
+                stack.pop();
+                int i_f = stack.top();
+                stack.pop();
+                stack.push(i_f - i_s);
+            }else if(string::npos != i.find("*") && i.length() == 1){
+                int i_s = stack.top();
+                stack.pop();
+                int i_f = stack.top();
+                stack.pop();
+                stack.push(i_s * i_f);
+            }else if(string::npos != i.find("/") && i.length() == 1){
+                int i_s = stack.top();
+                stack.pop();
+                int i_f = stack.top();
+                stack.pop();
+                stack.push(i_f / i_s);
+            }
+            else{
+                stack.push(atoi(i.c_str()));
+            }
+        }
+
+        return stack.top();
+    }
+};
+</int></string></code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Reverse Polish Notation/" data-id="cihyws9q50020vgitjqlryqpi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -783,7 +813,7 @@ class Solution {
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode-c/">leetcode c++</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux-c/">linux c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets-c/">wxWidgets c++</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode-c/">leetcode c++</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux-c/">linux c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets-c/">wxWidgets c++</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -810,7 +840,7 @@ class Solution {
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -822,19 +852,19 @@ class Solution {
       <ul>
         
           <li>
+            <a href="/2015/12/09/Find the Duplicate Number/">leetcode -   Find the Duplicate Number</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/09/Move Zeroes/">leetcode -   Move Zeroes</a>
+          </li>
+        
+          <li>
             <a href="/2015/12/09/2015-12-9-LeetCode - Ugly Number/">leetcode -  Ugly number.</a>
           </li>
         
           <li>
             <a href="/2015/12/08/2015-12-8-LeetCode - First Bad Version/">leetcode -  First Bad Version</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/09/Move Zeroes/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/09/Find the Duplicate Number/">(no title)</a>
           </li>
         
           <li>
