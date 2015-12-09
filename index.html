@@ -103,7 +103,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/09/2015-12-9-LeetCode - Ugly Number/" data-id="cihywbmft00004kit4pkydznu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/09/2015-12-9-LeetCode - Ugly Number/" data-id="cihyws9pl001qvgit8aya0sdc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -163,7 +163,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/08/2015-12-8-LeetCode - First Bad Version/" data-id="cihxhtcvl0000ssitbprgehb8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/08/2015-12-8-LeetCode - First Bad Version/" data-id="cihyws9pl001svgitcb8p6mza" class="article-share-link">Share</a>
       
       
     </footer>
@@ -221,7 +221,7 @@ Minimize <span class="operator">the</span> total <span class="built_in">number</
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/09/Move Zeroes/" data-id="cihxhtczu0002ssit3r1jjkvy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/09/Move Zeroes/" data-id="cihyws9nd0006vgitqkyoclit" class="article-share-link">Share</a>
       
       
     </footer>
@@ -272,84 +272,7 @@ There is only one duplicate number in the array, but it could be repeated more t
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/09/Find the Duplicate Number/" data-id="cihxhtczz0003ssit9fse6x2e" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2015-11-6-coding test - split string by space" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/06/2015-11-6-coding test - split string by space/" class="article-date">
-  <time datetime="2015-11-06T07:23:32.000Z" itemprop="datePublished">2015-11-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/06/2015-11-6-coding test - split string by space/">leetcode -  split string by space.</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>didn’t do well in coding test this morning. write below string utility. go fight!</p>
-<h3 id="code:">code:</h3><pre><code>
-#include <string>
-#include <sstream>
-#include <iostream>
-#include <vector>
-
-void trim_string(std::string& input_string){
-    while(!input_string.empty() && ' ' == input_string.at(0)){
-        input_string.erase(0, 1);
-    }
-}
-
-void splict_string(std::string input, std::vector<std::string>& v)
-{
-    std::string input_string = input;
-    trim_string(input_string);
-
-    size_t offset = 0;
-    offset = input_string.find(' ');
-    while(std::string::npos != offset)
-    {
-
-        std::string sub = input_string.substr(0, offset);
-        v.push_back(sub);
-
-        input_string.erase(0, offset);
-        trim_string(input_string);
-        offset = input_string.find(' ');
-    }
-
-    if (input_string.length() > 0)
-    {
-        v.push_back(input_string);
-        /* code */
-    }
-}
-</std::string></vector></iostream></sstream></string></code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-coding test - split string by space/" data-id="cigndc7s30002wcitzztxjonz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/09/Find the Duplicate Number/" data-id="cihyws9nd0007vgitfr575aml" class="article-share-link">Share</a>
       
       
     </footer>
@@ -438,7 +361,84 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Word Pattern/" data-id="cigndc7s60004wcitmfp0lor7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Word Pattern/" data-id="cihyws9q5001yvgitv3cxeu9y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-11-6-coding test - split string by space" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/06/2015-11-6-coding test - split string by space/" class="article-date">
+  <time datetime="2015-11-06T07:23:32.000Z" itemprop="datePublished">2015-11-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/06/2015-11-6-coding test - split string by space/">leetcode -  split string by space.</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>didn’t do well in coding test this morning. write below string utility. go fight!</p>
+<h3 id="code:">code:</h3><pre><code>
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <vector>
+
+void trim_string(std::string& input_string){
+    while(!input_string.empty() && ' ' == input_string.at(0)){
+        input_string.erase(0, 1);
+    }
+}
+
+void splict_string(std::string input, std::vector<std::string>& v)
+{
+    std::string input_string = input;
+    trim_string(input_string);
+
+    size_t offset = 0;
+    offset = input_string.find(' ');
+    while(std::string::npos != offset)
+    {
+
+        std::string sub = input_string.substr(0, offset);
+        v.push_back(sub);
+
+        input_string.erase(0, offset);
+        trim_string(input_string);
+        offset = input_string.find(' ');
+    }
+
+    if (input_string.length() > 0)
+    {
+        v.push_back(input_string);
+        /* code */
+    }
+}
+</std::string></vector></iostream></sstream></string></code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-coding test - split string by space/" data-id="cihyws9pv001uvgitirituwnp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -494,7 +494,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Nim Game/" data-id="cigndc7qb0000wcitknsyou47" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Nim Game/" data-id="cihyws9q50022vgitsv4sgyse" class="article-share-link">Share</a>
       
       
     </footer>
@@ -562,96 +562,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Longest Increasing Subsequence/" data-id="cigm7qxu5001sn8itknksp7id" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2015-11-6-LeetCode - Reverse Polish Notation" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/06/2015-11-6-LeetCode - Reverse Polish Notation/" class="article-date">
-  <time datetime="2015-11-06T03:23:32.000Z" itemprop="datePublished">2015-11-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/06/2015-11-6-LeetCode - Reverse Polish Notation/">leetcode -  Reverse Polish Notation.</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Evaluate the value of an arithmetic expression in Reverse Polish Notation.</p>
-<p>Valid operators are +, -, *, /. Each operand may be an integer or another expression.</p>
-<p>Some examples:</p>
-<p>  [“2”, “1”, “+”, “3”, “<em>“] -&gt; ((2 + 1) </em> 3) -&gt; 9<br>  [“4”, “13”, “5”, “/“, “+”] -&gt; (4 + (13 / 5)) -&gt; 6</p>
-<h3 id="code:">code:</h3><pre><code>
-class Solution
-{
-public:
-    int evalRPN(vector<string>& tokens) {
-        if(tokens.size() == 0)
-            return 0;
-
-        std::stack<int> stack;
-        for(auto i: tokens)
-        {
-
-            if(string::npos != i.find("+") && i.length() == 1){
-                int i_s = stack.top();
-                stack.pop();
-                int i_f = stack.top();
-                stack.pop();
-                stack.push(i_s + i_f);
-            }else if(string::npos != i.find("-") && i.length() == 1){
-                int i_s = stack.top();
-                stack.pop();
-                int i_f = stack.top();
-                stack.pop();
-                stack.push(i_f - i_s);
-            }else if(string::npos != i.find("*") && i.length() == 1){
-                int i_s = stack.top();
-                stack.pop();
-                int i_f = stack.top();
-                stack.pop();
-                stack.push(i_s * i_f);
-            }else if(string::npos != i.find("/") && i.length() == 1){
-                int i_s = stack.top();
-                stack.pop();
-                int i_f = stack.top();
-                stack.pop();
-                stack.push(i_f / i_s);
-            }
-            else{
-                stack.push(atoi(i.c_str()));
-            }
-        }
-
-        return stack.top();
-    }
-};
-</int></string></code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Reverse Polish Notation/" data-id="cigm7qxu2001qn8itbj17zqje" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Longest Increasing Subsequence/" data-id="cihyws9q50024vgitvdfjvqu7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -725,7 +636,131 @@ public:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Invert a binary tree/" data-id="cigm7qxua001un8itmd4ct1ct" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Invert a binary tree/" data-id="cihyws9q50026vgiti0rikaq5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-11-6-LeetCode - invalid parentheses" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/06/2015-11-6-LeetCode - invalid parentheses/" class="article-date">
+  <time datetime="2015-11-06T03:23:32.000Z" itemprop="datePublished">2015-11-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/06/2015-11-6-LeetCode - invalid parentheses/">leetcode -  invalid parentheses</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.</p>
+<p>Note: The input string may contain letters other than the parentheses ( and ).</p>
+<h2 id="Examples:">Examples:</h2><p>“()())()” -&gt; [“()()()”, “(())()”]<br>“(a)())()” -&gt; [“(a)()()”, “(a())()”]<br>“)(“ -&gt; [“”]</p>
+<hr>
+<h3 id="code:">code:</h3><pre><code>
+class Solution {
+    int sum_all;
+  public:
+    vector<string> removeInvalidParentheses(string s) {
+        vector<string> results;
+
+        sum_all = sum(s);
+        string cur_result = "";
+        removeDsf(s, 0, cur_result, results);
+        sort(results.begin(), results.end());
+        results.erase(unique(results.begin(), results.end()), results.end());
+
+        if (results.size() == 0 && s.length() > 0) {
+            results.push_back("");
+        }
+        return results;
+    }
+
+    int sum(string str) {
+        int c = 0;
+        int sum = 0;
+        for (auto i : str) {
+            if (i == '(') {
+                c++;
+            } else if (i == ')') {
+                c--;
+                if (c == -1) {
+                    c = 0;
+                } else if (c >= 0) {
+                    sum++;
+                }
+            }
+        }
+        return sum;
+    }
+
+    bool invalid(string cur_result) {
+        int c = 0;
+        for (auto i : cur_result) {
+            if (i == '(') {
+                c++;
+            } else if (i == ')') {
+                c--;
+            }
+            if ( c < 0) {
+                return false;
+            }
+        }
+        return c == 0 && sum(cur_result) == sum_all;
+    }
+
+    void removeDsf(string s, int l_count, string& cur_result, vector<string>& results) {
+        if (l_count < 0) {
+            return;
+        }
+
+        if (s.length() == 0) {
+            if (invalid(cur_result)) {
+                results.push_back(cur_result);
+            }
+            return;
+        }
+
+
+        if (s.at(0) == '(' || s.at(0) == ')') {
+            std::string s0 = s.substr(1, s.length() - 1);
+            string new_result = cur_result;
+            removeDsf(s0,  l_count, new_result, results);
+
+            l_count += s.at(0) == '(' ? 1 : -1;
+            new_result = cur_result + s.at(0);
+            removeDsf(s0, l_count, new_result, results);
+        } else {
+            cur_result += s.at(0);
+            std::string s0 = s.substr(1, s.length() - 1);
+            removeDsf(s0, l_count, cur_result, results);
+        }
+    }
+};
+</string></string></string></code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - invalid parentheses/" data-id="cihyws9pv001wvgitwgnmhiua" class="article-share-link">Share</a>
       
       
     </footer>
@@ -803,7 +838,7 @@ public:
           </li>
         
           <li>
-            <a href="/2015/11/06/2015-11-6-coding test - split string by space/">leetcode -  split string by space.</a>
+            <a href="/2015/11/06/2015-11-6-LeetCode - Word Pattern/">leetcode -  Word Pattern</a>
           </li>
         
       </ul>
