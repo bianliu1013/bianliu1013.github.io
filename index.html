@@ -65,16 +65,12 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Find the Duplicate Number" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Move-Zeroes" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/12/09/Find the Duplicate Number/" class="article-date">
-  <time datetime="2015-12-09T03:23:32.000Z" itemprop="datePublished">2015-12-09</time>
+    <a href="/2015/12/10/Move-Zeroes/" class="article-date">
+  <time datetime="2015-12-10T02:52:10.000Z" itemprop="datePublished">2015-12-10</time>
 </a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
-  </div>
-
   </div>
   <div class="article-inner">
     
@@ -83,7 +79,92 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/09/Find the Duplicate Number/">leetcode -   Find the Duplicate Number</a>
+      <a class="article-title" href="/2015/12/10/Move-Zeroes/">Move Zeroes</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.</p>
+<p>For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].</p>
+<p>Note:</p>
+<pre><code>You must <span class="built_in">do</span> this <span class="operator">in</span>-place <span class="keyword">without</span> making <span class="operator">a</span> copy <span class="operator">of</span> <span class="operator">the</span> array.
+Minimize <span class="operator">the</span> total <span class="built_in">number</span> <span class="operator">of</span> operations.
+</code></pre><h3 id="code:">code:</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;&#10;public:&#10;    void moveZeroes(vector&#60;int&#62;&#38; nums) &#123;&#10;        if(nums.size() &#60;= 1)&#10;            return;&#10;&#10;        int f = 0;&#10;        int s = 1;&#10;        int temp = 0;&#10;&#10;        while(s &#60; nums.size() &#38;&#38; f &#60; nums.size())&#10;        &#123;&#10;            // compare&#10;            if(nums[f] == 0)&#123;&#10;                if(nums[s] != 0)&#123;&#10;                    temp = nums[f];&#10;                    nums[f] = nums[s];&#10;                    nums[s] = temp;&#10;                    f += 1;&#10;                    s += 1;&#10;                &#125;&#10;                else&#123;  // 0, 0, 1&#10;                    s += 1;&#10;                &#125;&#10;            &#125;&#10;            else&#123;&#10;                f += 1;&#10;                s += 1;&#10;            &#125;&#10;        &#125;&#10;    &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/12/10/Move-Zeroes/" data-id="cihznhm620008akit3bzlcdeh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algothrim/">algothrim</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Ugly-Number" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/10/Ugly-Number/" class="article-date">
+  <time datetime="2015-12-10T02:40:55.000Z" itemprop="datePublished">2015-12-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/10/Ugly-Number/">Ugly Number</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> Write a program to check whether a given number is an ugly number.</p>
+<p>Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. For example, 6, 8 are ugly while 14 is not ugly since it includes another prime factor 7.</p>
+<p>Note that 1 is typically treated as an ugly number. </p>
+<h3 id="code:">code:</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;&#10;  public:&#10;    bool isUgly(int number) &#123;&#10;        if(number &#60;= 0)&#10;            return false;&#10;        &#10;        while(number % 2 == 0)&#10;            number /= 2;&#10;    &#10;        while(number % 3 == 0)&#10;            number /= 3;&#10;    &#10;        while(number % 5 == 0)&#10;            number /= 5;&#10;    &#10;        return (number == 1) ? true : false;&#10;    &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/12/10/Ugly-Number/" data-id="cihznhm5z0005akitqp709pgk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Find-the-Duplicate-Number" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/10/Find-the-Duplicate-Number/" class="article-date">
+  <time datetime="2015-12-10T02:39:05.000Z" itemprop="datePublished">2015-12-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/10/Find-the-Duplicate-Number/">Find the Duplicate Number2</a>
     </h1>
   
 
@@ -124,106 +205,11 @@ public:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/09/Find the Duplicate Number/" data-id="cihyxco490002acit52qud090" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/10/Find-the-Duplicate-Number/" data-id="cihznhm66000bakituervgmuf" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
 
-
-  
-    <article id="post-Move Zeroes" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/09/Move Zeroes/" class="article-date">
-  <time datetime="2015-12-09T03:23:32.000Z" itemprop="datePublished">2015-12-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/09/Move Zeroes/">leetcode -   Move Zeroes</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> Given an array nums, write a function to move all 0’s to the end of it while maintaining the relative order of the non-zero elements.</p>
-<p>For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].</p>
-<p>Note:</p>
-<pre><code>You must <span class="built_in">do</span> this <span class="operator">in</span>-place <span class="keyword">without</span> making <span class="operator">a</span> copy <span class="operator">of</span> <span class="operator">the</span> array.
-Minimize <span class="operator">the</span> total <span class="built_in">number</span> <span class="operator">of</span> operations.
-</code></pre><h3 id="code:">code:</h3><pre><code>
-class Solution {
-public:
-    void moveZeroes(vector<int>& nums) {
-        if(nums.size() <= 1="" 1)="" return;="" int="" f="0;" s="1;" temp="0;" while(s="" <="" nums.size()="" &&="" nums.size())="" {="" compare="" if(nums[f]="=" 0){="" if(nums[s]="" !="0){" nums[f]="nums[s];" nums[s]="temp;" +="1;" }="" else{="" 0,="" };="" code=""></=></int></code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/09/Move Zeroes/" data-id="cihyxcflr0000acit9glzhawq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2015-12-9-LeetCode - Ugly Number" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/12/09/2015-12-9-LeetCode - Ugly Number/" class="article-date">
-  <time datetime="2015-12-09T03:23:32.000Z" itemprop="datePublished">2015-12-09</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/09/2015-12-9-LeetCode - Ugly Number/">leetcode -  Ugly number.</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> Write a program to check whether a given number is an ugly number.</p>
-<p>Ugly numbers are positive numbers whose prime factors only include 2, 3, 5. For example, 6, 8 are ugly while 14 is not ugly since it includes another prime factor 7.</p>
-<p>Note that 1 is typically treated as an ugly number. </p>
-<h3 id="code:">code:</h3><pre><code>
-
-class Solution {
-  public:
-    bool isUgly(int number) {
-        if(number <= 2="=" 3="=" 5="=" 0)="" return="" false;="" while(number="" %="" number="" =="" 2;="" 3;="" 5;="" (number="=" 1)="" ?="" true="" :="" }="" };="" <="" code=""></=></code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/09/2015-12-9-LeetCode - Ugly Number/" data-id="cihyws9pl001qvgit8aya0sdc" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -281,7 +267,84 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/12/08/2015-12-8-LeetCode - First Bad Version/" data-id="cihyws9pl001svgitcb8p6mza" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/12/08/2015-12-8-LeetCode - First Bad Version/" data-id="cihznhm88001vakitu2j1e0cg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-11-6-coding test - split string by space" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/06/2015-11-6-coding test - split string by space/" class="article-date">
+  <time datetime="2015-11-06T07:23:32.000Z" itemprop="datePublished">2015-11-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/06/2015-11-6-coding test - split string by space/">leetcode -  split string by space.</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>didn’t do well in coding test this morning. write below string utility. go fight!</p>
+<h3 id="code:">code:</h3><pre><code>
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <vector>
+
+void trim_string(std::string& input_string){
+    while(!input_string.empty() && ' ' == input_string.at(0)){
+        input_string.erase(0, 1);
+    }
+}
+
+void splict_string(std::string input, std::vector<std::string>& v)
+{
+    std::string input_string = input;
+    trim_string(input_string);
+
+    size_t offset = 0;
+    offset = input_string.find(' ');
+    while(std::string::npos != offset)
+    {
+
+        std::string sub = input_string.substr(0, offset);
+        v.push_back(sub);
+
+        input_string.erase(0, offset);
+        trim_string(input_string);
+        offset = input_string.find(' ');
+    }
+
+    if (input_string.length() > 0)
+    {
+        v.push_back(input_string);
+        /* code */
+    }
+}
+</std::string></vector></iostream></sstream></string></code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-coding test - split string by space/" data-id="cihznhm8b001xakit3rzdxj2r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -370,84 +433,7 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Word Pattern/" data-id="cihyws9q5001yvgitv3cxeu9y" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2015-11-6-coding test - split string by space" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/06/2015-11-6-coding test - split string by space/" class="article-date">
-  <time datetime="2015-11-06T07:23:32.000Z" itemprop="datePublished">2015-11-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/06/2015-11-6-coding test - split string by space/">leetcode -  split string by space.</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>didn’t do well in coding test this morning. write below string utility. go fight!</p>
-<h3 id="code:">code:</h3><pre><code>
-#include <string>
-#include <sstream>
-#include <iostream>
-#include <vector>
-
-void trim_string(std::string& input_string){
-    while(!input_string.empty() && ' ' == input_string.at(0)){
-        input_string.erase(0, 1);
-    }
-}
-
-void splict_string(std::string input, std::vector<std::string>& v)
-{
-    std::string input_string = input;
-    trim_string(input_string);
-
-    size_t offset = 0;
-    offset = input_string.find(' ');
-    while(std::string::npos != offset)
-    {
-
-        std::string sub = input_string.substr(0, offset);
-        v.push_back(sub);
-
-        input_string.erase(0, offset);
-        trim_string(input_string);
-        offset = input_string.find(' ');
-    }
-
-    if (input_string.length() > 0)
-    {
-        v.push_back(input_string);
-        /* code */
-    }
-}
-</std::string></vector></iostream></sstream></string></code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-coding test - split string by space/" data-id="cihyws9pv001uvgitirituwnp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Word Pattern/" data-id="cihznhm8i0021akit53whke10" class="article-share-link">Share</a>
       
       
     </footer>
@@ -503,7 +489,75 @@ class Solution {
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Nim Game/" data-id="cihyws9q50022vgitsv4sgyse" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Nim Game/" data-id="cihznhm8n0025akitza1avjk3" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-11-6-LeetCode - Longest Increasing Subsequence" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/06/2015-11-6-LeetCode - Longest Increasing Subsequence/" class="article-date">
+  <time datetime="2015-11-06T03:23:32.000Z" itemprop="datePublished">2015-11-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/06/2015-11-6-LeetCode - Longest Increasing Subsequence/">leetcode -  longest increasing subsequence</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Given an unsorted array of integers, find the length of longest increasing subsequence.</p>
+<p>For example,<br>Given [10, 9, 2, 5, 3, 7, 101, 18],<br>The longest increasing subsequence is [2, 3, 7, 101], therefore the length is 4. Note that there may be more than one LIS combination, it is only necessary for you to return the length.</p>
+<p>Your algorithm should run in O(n2) complexity.</p>
+<p>Follow up: Could you improve it to O(n log n) time complexity? </p>
+<h3 id="code:">code:</h3><pre><code>
+class Solution {
+  public:
+    int lengthOfLIS(vector<int>& nums) {
+        int max_length = 1;
+        if (nums.size() <= 1)="" {="" return="" nums.size();="" }="" std::vector<int=""> matrics(nums.size(), 1);
+        for (int i = 0; i < nums.size(); i++) {
+            for (int j = i + 1; j < nums.size(); j++) {
+                if (nums[j] > nums[i]) {
+                    if (nums[j] > nums[j - 1] && nums[j - 1] > nums[i]) {
+                        matrics[j] = matrics[j - 1] + 1;
+                        max_length = max(max_length, matrics[j]);
+                    } else {
+                        matrics[j] = max(matrics[i] + 1, matrics[j]);
+                        max_length = max(max_length, matrics[j]);
+                    }
+                } else {
+                }
+            }
+        }
+
+        return max_length;
+    }
+};
+</=></int></code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Longest Increasing Subsequence/" data-id="cihznhm8p0027akit1isvd8xm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -577,131 +631,7 @@ public:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Invert a binary tree/" data-id="cihyws9q50026vgiti0rikaq5" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2015-11-6-LeetCode - invalid parentheses" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/11/06/2015-11-6-LeetCode - invalid parentheses/" class="article-date">
-  <time datetime="2015-11-06T03:23:32.000Z" itemprop="datePublished">2015-11-06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/06/2015-11-6-LeetCode - invalid parentheses/">leetcode -  invalid parentheses</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.</p>
-<p>Note: The input string may contain letters other than the parentheses ( and ).</p>
-<h2 id="Examples:">Examples:</h2><p>“()())()” -&gt; [“()()()”, “(())()”]<br>“(a)())()” -&gt; [“(a)()()”, “(a())()”]<br>“)(“ -&gt; [“”]</p>
-<hr>
-<h3 id="code:">code:</h3><pre><code>
-class Solution {
-    int sum_all;
-  public:
-    vector<string> removeInvalidParentheses(string s) {
-        vector<string> results;
-
-        sum_all = sum(s);
-        string cur_result = "";
-        removeDsf(s, 0, cur_result, results);
-        sort(results.begin(), results.end());
-        results.erase(unique(results.begin(), results.end()), results.end());
-
-        if (results.size() == 0 && s.length() > 0) {
-            results.push_back("");
-        }
-        return results;
-    }
-
-    int sum(string str) {
-        int c = 0;
-        int sum = 0;
-        for (auto i : str) {
-            if (i == '(') {
-                c++;
-            } else if (i == ')') {
-                c--;
-                if (c == -1) {
-                    c = 0;
-                } else if (c >= 0) {
-                    sum++;
-                }
-            }
-        }
-        return sum;
-    }
-
-    bool invalid(string cur_result) {
-        int c = 0;
-        for (auto i : cur_result) {
-            if (i == '(') {
-                c++;
-            } else if (i == ')') {
-                c--;
-            }
-            if ( c < 0) {
-                return false;
-            }
-        }
-        return c == 0 && sum(cur_result) == sum_all;
-    }
-
-    void removeDsf(string s, int l_count, string& cur_result, vector<string>& results) {
-        if (l_count < 0) {
-            return;
-        }
-
-        if (s.length() == 0) {
-            if (invalid(cur_result)) {
-                results.push_back(cur_result);
-            }
-            return;
-        }
-
-
-        if (s.at(0) == '(' || s.at(0) == ')') {
-            std::string s0 = s.substr(1, s.length() - 1);
-            string new_result = cur_result;
-            removeDsf(s0,  l_count, new_result, results);
-
-            l_count += s.at(0) == '(' ? 1 : -1;
-            new_result = cur_result + s.at(0);
-            removeDsf(s0, l_count, new_result, results);
-        } else {
-            cur_result += s.at(0);
-            std::string s0 = s.substr(1, s.length() - 1);
-            removeDsf(s0, l_count, cur_result, results);
-        }
-    }
-};
-</string></string></string></code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - invalid parentheses/" data-id="cihyws9pv001wvgitwgnmhiua" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Invert a binary tree/" data-id="cihznhm8q0029akitie7dqvgt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -790,7 +720,7 @@ public:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Reverse Polish Notation/" data-id="cihyws9q50020vgitjqlryqpi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Reverse Polish Notation/" data-id="cihznhm8l0023akitxtax8odc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -813,7 +743,7 @@ public:
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode-c/">leetcode c++</a><span class="category-list-count">30</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux-c/">linux c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets-c/">wxWidgets c++</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode-c/">leetcode c++</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux-c/">linux c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets-c/">wxWidgets c++</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -822,7 +752,7 @@ public:
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qt/">qt</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algothrim/">algothrim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qt/">qt</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -831,7 +761,7 @@ public:
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/qt/" style="font-size: 10px;">qt</a>
+      <a href="/tags/algothrim/" style="font-size: 10px;">algothrim</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/qt/" style="font-size: 10px;">qt</a>
     </div>
   </div>
 
@@ -852,15 +782,15 @@ public:
       <ul>
         
           <li>
-            <a href="/2015/12/09/Find the Duplicate Number/">leetcode -   Find the Duplicate Number</a>
+            <a href="/2015/12/10/Move-Zeroes/">Move Zeroes</a>
           </li>
         
           <li>
-            <a href="/2015/12/09/Move Zeroes/">leetcode -   Move Zeroes</a>
+            <a href="/2015/12/10/Ugly-Number/">Ugly Number</a>
           </li>
         
           <li>
-            <a href="/2015/12/09/2015-12-9-LeetCode - Ugly Number/">leetcode -  Ugly number.</a>
+            <a href="/2015/12/10/Find-the-Duplicate-Number/">Find the Duplicate Number2</a>
           </li>
         
           <li>
@@ -868,7 +798,7 @@ public:
           </li>
         
           <li>
-            <a href="/2015/11/06/2015-11-6-LeetCode - Word Pattern/">leetcode -  Word Pattern</a>
+            <a href="/2015/11/06/2015-11-6-coding test - split string by space/">leetcode -  split string by space.</a>
           </li>
         
       </ul>
