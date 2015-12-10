@@ -1,8 +1,7 @@
----
-layout: post
-title: leetcode -  Word Break II!
+title:  Word Break II!
 date:   2015-06-06 11:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
 
 

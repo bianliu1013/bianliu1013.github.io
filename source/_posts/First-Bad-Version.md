@@ -1,8 +1,7 @@
----
-layout: post
-title: leetcode -  First Bad Version
+title: First Bad Version
 date:   2015-12-8 15:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
 
 
@@ -15,7 +14,7 @@ You are given an API bool isBadVersion(version) which will return whether versio
 
 
 ### code:
-<pre><code>
+```cplusplus
 
 
 // Forward declaration of isBadVersion API.
@@ -45,5 +44,4 @@ class Solution {
         return found;
     }
 };
-
-</code></pre>
+```

@@ -1,8 +1,7 @@
----
-layout: post
-title: leetcode -  Nim Game
+title:  Nim Game
 date:   2015-11-6 15:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
 
 
@@ -20,7 +19,7 @@ Hint:
 
 
 ### code:
-<pre><code>
+```cplusplus
 class Solution {
   public:
     bool canWinNim(int n) {
@@ -31,4 +30,4 @@ class Solution {
         return n % 4 == 0? false: true;
     }
 };
-</code></pre>
+```

@@ -1,8 +1,7 @@
----
-layout: post
 title: Get seconds since the Epoch ( UTC time as input parameter)  !
 date:  2015-05-28 11:23:32
-categories: linux c++
+categories: linux
+tags: linux
 ---
 
 

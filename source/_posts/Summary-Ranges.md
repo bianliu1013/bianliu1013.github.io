@@ -1,8 +1,7 @@
----
-layout: post
-title: leetcode -  Summary Ranges
+title: Summary Ranges
 date:   2015-12-9 11:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
 
 
@@ -13,7 +12,7 @@ For example, given [0,1,2,4,5,7], return ["0->2","4->5","7"].
 
 
 ### code:
-<pre><code>
+```cplusplus
 class Solution {
 public:
     vector<string> summaryRanges(vector<int>& nums) {
@@ -55,4 +54,4 @@ public:
          return v;
     }
 };
-</code></pre>
+```

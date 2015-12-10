@@ -1,9 +1,9 @@
----
-layout: post
-title: leetcode -  invalid parentheses
+title: invalid parentheses
 date:   2015-11-6 11:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
+
 
 Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.
 
@@ -18,7 +18,7 @@ Examples:
 ---
 
 ### code:
-<pre><code>
+```cplusplus
 class Solution {
     int sum_all;
   public:
@@ -98,4 +98,4 @@ class Solution {
         }
     }
 };
-</code></pre>
+```

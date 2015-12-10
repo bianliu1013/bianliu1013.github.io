@@ -1,8 +1,7 @@
----
-layout: post
-title: leetcode - Reverse Words in a String!
+title:  Reverse Words in a String!
 date:   2015-05-17 11:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
 
 Given an input string, reverse the string word by word.

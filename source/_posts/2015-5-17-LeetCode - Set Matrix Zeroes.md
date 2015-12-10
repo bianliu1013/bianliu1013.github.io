@@ -1,8 +1,7 @@
----
-layout: post
-title: leetcode - Set Matrix Zeroes!
+title:  Set Matrix Zeroes!
 date:   2015-05-17 11:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
 
  Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.

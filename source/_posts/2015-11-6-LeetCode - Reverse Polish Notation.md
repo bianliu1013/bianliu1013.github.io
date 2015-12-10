@@ -1,9 +1,9 @@
----
-layout: post
-title: leetcode -  Reverse Polish Notation.
+title: Reverse Polish Notation.
 date:   2015-11-6 11:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
+
 
 Evaluate the value of an arithmetic expression in Reverse Polish Notation.
 
@@ -16,7 +16,7 @@ Some examples:
 
 
 ### code:
-<pre><code>
+```cplusplus
 class Solution
 {
 public:
@@ -61,4 +61,4 @@ public:
         return stack.top();
     }
 };
-</code></pre>
+```

@@ -1,6 +1,6 @@
 title: Ugly Number
 date: 2015-12-10 10:40:55
-tags: leetcode
+tags: algothrim
 ---
 
 

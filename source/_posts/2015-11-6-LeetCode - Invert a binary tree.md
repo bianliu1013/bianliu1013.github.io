@@ -1,9 +1,9 @@
----
-layout: post
-title: leetcode -  Invert a binary tree.
+title: Invert a binary tree.
 date:   2015-11-6 11:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
+
 
 
 ---
@@ -27,7 +27,7 @@ Trivia:
 This problem was inspired by this original tweet by Max Howell: 
 
 ### code:
-<pre><code>
+```cplusplus
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -53,4 +53,4 @@ public:
         return root;
     }
 };
-</code></pre>
+```

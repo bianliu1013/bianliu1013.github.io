@@ -1,8 +1,7 @@
----
-layout: post
-title: leetcode -  Text Justification!
+title:  Text Justification!
 date:   2015-06-05 11:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
 
 

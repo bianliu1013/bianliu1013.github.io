@@ -65,14 +65,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2015-5-17-LeetCode - Reverse Words in a String" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-2015-5-17-LeetCode - Merge Two Sorted Lists" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/05/17/2015-5-17-LeetCode - Reverse Words in a String/" class="article-date">
+    <a href="/2015/05/17/2015-5-17-LeetCode - Merge Two Sorted Lists/" class="article-date">
   <time datetime="2015-05-17T03:23:32.000Z" itemprop="datePublished">2015-05-17</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+    <a class="article-category-link" href="/categories/algothrim/">algothrim</a>
   </div>
 
   </div>
@@ -83,7 +83,51 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/17/2015-5-17-LeetCode - Reverse Words in a String/">leetcode - Reverse Words in a String!</a>
+      <a class="article-title" href="/2015/05/17/2015-5-17-LeetCode - Merge Two Sorted Lists/">Merge Two Sorted Lists!</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.</p>
+<hr>
+<h3 id="code">code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">mergeTwoLists</span><span class="params">(ListNode *l1, ListNode *l2)</span> </span>&#123;</span><br><span class="line">        ListNode* p = <span class="literal">NULL</span>;</span><br><span class="line">        ListNode* p1 = l1;</span><br><span class="line">        ListNode* p2 = l2;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(l1 == <span class="literal">NULL</span>)</span><br><span class="line">             <span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span>(l2 == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// head</span></span><br><span class="line">        <span class="keyword">if</span>(l1-&gt;val &lt;= l2-&gt;val)</span><br><span class="line">        &#123;</span><br><span class="line">            p = p1;</span><br><span class="line">            p1 = p1-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            p = p2;</span><br><span class="line">            p2 = p2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        ListNode* p_head = p;</span><br><span class="line">        <span class="keyword">while</span>(p1 != <span class="literal">NULL</span> || p2 != <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(p1 == <span class="literal">NULL</span>)&#123;</span><br><span class="line">                p-&gt;next = p2;</span><br><span class="line">                <span class="keyword">return</span> p_head;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(p2 == <span class="literal">NULL</span>)&#123;</span><br><span class="line">                p-&gt;next = p1;</span><br><span class="line">                <span class="keyword">return</span> p_head;</span><br><span class="line">            &#125;</span><br><span class="line">                </span><br><span class="line">            <span class="keyword">if</span>(p1-&gt;val &lt;= p2-&gt;val)</span><br><span class="line">            &#123;</span><br><span class="line">                p-&gt;next = p1;</span><br><span class="line">                p1 = p1-&gt;next;</span><br><span class="line">                p = p-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                p-&gt;next = p2;</span><br><span class="line">                p2 = p2-&gt;next;</span><br><span class="line">                p = p-&gt;next;           </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> p_head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/05/17/2015-5-17-LeetCode - Merge Two Sorted Lists/" data-id="cihznhm7t001iakitzeejjncr" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algothrim/">algothrim</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2015-5-17-LeetCode - Reverse Words in a String" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/17/2015-5-17-LeetCode - Reverse Words in a String/" class="article-date">
+  <time datetime="2015-05-17T03:23:32.000Z" itemprop="datePublished">2015-05-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algothrim/">algothrim</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/17/2015-5-17-LeetCode - Reverse Words in a String/">Reverse Words in a String!</a>
     </h1>
   
 
@@ -105,6 +149,8 @@
       <a data-url="http://yoursite.com/2015/05/17/2015-5-17-LeetCode - Reverse Words in a String/" data-id="cihznhm7q001gakitsekzz97u" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algothrim/">algothrim</a></li></ul>
+
     </footer>
   </div>
   
@@ -119,7 +165,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+    <a class="article-category-link" href="/categories/algothrim/">algothrim</a>
   </div>
 
   </div>
@@ -130,7 +176,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/17/2015-5-17-LeetCode - Set Matrix Zeroes/">leetcode - Set Matrix Zeroes!</a>
+      <a class="article-title" href="/2015/05/17/2015-5-17-LeetCode - Set Matrix Zeroes/">Set Matrix Zeroes!</a>
     </h1>
   
 
@@ -150,6 +196,8 @@
       <a data-url="http://yoursite.com/2015/05/17/2015-5-17-LeetCode - Set Matrix Zeroes/" data-id="cihznhm7n001eakit76fogr39" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algothrim/">algothrim</a></li></ul>
+
     </footer>
   </div>
   
@@ -164,7 +212,7 @@
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+    <a class="article-category-link" href="/categories/algothrim/">algothrim</a>
   </div>
 
   </div>
@@ -175,7 +223,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/17/2015-5-17-LeetCode -Longest Valid Parentheses/">leetcode - Longest Valid Parentheses!</a>
+      <a class="article-title" href="/2015/05/17/2015-5-17-LeetCode -Longest Valid Parentheses/">Longest Valid Parentheses!</a>
     </h1>
   
 
@@ -194,6 +242,8 @@
       <a data-url="http://yoursite.com/2015/05/17/2015-5-17-LeetCode -Longest Valid Parentheses/" data-id="cihznhm7k001cakit7eq8qhqr" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algothrim/">algothrim</a></li></ul>
+
     </footer>
   </div>
   
@@ -250,78 +300,6 @@
     </div>
     <footer class="article-footer">
       <a data-url="http://yoursite.com/2015/01/01/2015-01-01-boost condition timed wait return issue/" data-id="cihznhm8s002bakit82ohz5pc" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2014-08-01-all things learned from UVC 1(libusb &amp; libusbk)" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/" class="article-date">
-  <time datetime="2014-08-01T03:23:32.000Z" itemprop="datePublished">2014-08-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/uvc-c/">uvc c++</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/">all things learned from UVC1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><br></p>
-<h2 id="Libusb_and_libusbK_的关系">Libusb and libusbK 的关系</h2><blockquote>
-<p>Libusbk是libusb的超集。同时支持libusb, winusb, libusbk三种驱动模式。</p>
-</blockquote>
-<p><br></p>
-<h2 id="环境搭建">环境搭建</h2><blockquote>
-<p>在 <a href="http://sourceforge.net/projects/libusbk" target="_blank" rel="external">http://sourceforge.net/projects/libusbk</a> 上可以拿到最新的 libusbk 库， setup.exe 会装好运行环境，driver installer creator Wizard 等工具。</p>
-</blockquote>
-<p><br></p>
-<h2 id="如何使用">如何使用</h2><blockquote>
-<p>用 “driver installer creator Wizard” 更新自己的driver，如果是UVC设备，就要把自带的usbvideo驱动换成 libusbk的驱动。更新成功后，device manager 里会有libusbk的一栏。</p>
-</blockquote>
-<p><br></p>
-<h2 id="Sample">Sample</h2><blockquote>
-<p>C:\libusbK-dev-kit\examples 里有自带的各种sample， 默认是vs2008的工程，如没有2008环境，自己可以改project文件。 Sample写的都很舒服， 一般只需要更把EXAMPLE_VID，EXAMPLE_VID的值改成自己设备的， 把EXAMPLES_USE_BENCHMARK_CONFIGURE 设为0 就OK。 体验体验吧，从设备里拿到第一个字节的冲动。：）</p>
-</blockquote>
-<p><br></p>
-<h2 id="如何验证？">如何验证？</h2><blockquote>
-<p>简单的验证，可以用usblyzer抓包工具 和你的sample结果进行对比，看是否一致。 Usblyzer一次抓包buffer是有限制的（默认16k？），自己摸索的改成最大。</p>
-</blockquote>
-<p><br></p>
-<h2 id="为何选择libusbk">为何选择libusbk</h2><blockquote>
-<p>因为硬件设计，每个isopackage 的头都标示frame的信息（非标准视频文件头），而我又需要这些信息，libusb不满足，详情见我的<a href="http://libusb.6.n5.nabble.com/how-to-get-the-size-of-each-packet-td5663684.html" target="_blank" rel="external">request</a></p>
-</blockquote>
-<p><br></p>
-<h2 id="libusk有什么不足">libusk有什么不足</h2><blockquote>
-<p>曾经见一位仁兄抱怨，是不是他是第一个用这个库的人。。现在用下来，有时候也真有同感，不过好在库的开发者都很好，support都很nice。几轮回合下来（<a href="http://libusb.6.n5.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=334628），看着最新的release" target="_blank" rel="external">http://libusb.6.n5.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=334628），看着最新的release</a> note里，好几个 reported by peter， 有那么点成就感（IT行业摸爬5年，终于为开源做点贡献），也有担心—蓝屏的问题还没有solution。将来。。。 Anyway, keep moving on.</p>
-</blockquote>
-<p><br></p>
-<h2 id="2005如何编译_libusbk">2005如何编译 libusbk</h2><blockquote>
-<p>在 <a href="http://sourceforge.net/projects/libusbk" target="_blank" rel="external">http://sourceforge.net/projects/libusbk</a> 下到最新的source， 在\src\lib下面有libusbK_lib.vcproj，修改Version=”8.00”， 然后build，应该会报告两个错， error code找不到，可以google标准的windows error code，直接用数字代替。重新编译，就能得到静态库了。</p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/" data-id="cihznhm530000akit7jilftad" class="article-share-link">Share</a>
       
       
     </footer>
@@ -409,6 +387,78 @@
 
 
   
+    <article id="post-2014-08-01-all things learned from UVC 1(libusb &amp; libusbk)" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/" class="article-date">
+  <time datetime="2014-08-01T03:23:32.000Z" itemprop="datePublished">2014-08-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/uvc-c/">uvc c++</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/">all things learned from UVC1</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><br></p>
+<h2 id="Libusb_and_libusbK_的关系">Libusb and libusbK 的关系</h2><blockquote>
+<p>Libusbk是libusb的超集。同时支持libusb, winusb, libusbk三种驱动模式。</p>
+</blockquote>
+<p><br></p>
+<h2 id="环境搭建">环境搭建</h2><blockquote>
+<p>在 <a href="http://sourceforge.net/projects/libusbk" target="_blank" rel="external">http://sourceforge.net/projects/libusbk</a> 上可以拿到最新的 libusbk 库， setup.exe 会装好运行环境，driver installer creator Wizard 等工具。</p>
+</blockquote>
+<p><br></p>
+<h2 id="如何使用">如何使用</h2><blockquote>
+<p>用 “driver installer creator Wizard” 更新自己的driver，如果是UVC设备，就要把自带的usbvideo驱动换成 libusbk的驱动。更新成功后，device manager 里会有libusbk的一栏。</p>
+</blockquote>
+<p><br></p>
+<h2 id="Sample">Sample</h2><blockquote>
+<p>C:\libusbK-dev-kit\examples 里有自带的各种sample， 默认是vs2008的工程，如没有2008环境，自己可以改project文件。 Sample写的都很舒服， 一般只需要更把EXAMPLE_VID，EXAMPLE_VID的值改成自己设备的， 把EXAMPLES_USE_BENCHMARK_CONFIGURE 设为0 就OK。 体验体验吧，从设备里拿到第一个字节的冲动。：）</p>
+</blockquote>
+<p><br></p>
+<h2 id="如何验证？">如何验证？</h2><blockquote>
+<p>简单的验证，可以用usblyzer抓包工具 和你的sample结果进行对比，看是否一致。 Usblyzer一次抓包buffer是有限制的（默认16k？），自己摸索的改成最大。</p>
+</blockquote>
+<p><br></p>
+<h2 id="为何选择libusbk">为何选择libusbk</h2><blockquote>
+<p>因为硬件设计，每个isopackage 的头都标示frame的信息（非标准视频文件头），而我又需要这些信息，libusb不满足，详情见我的<a href="http://libusb.6.n5.nabble.com/how-to-get-the-size-of-each-packet-td5663684.html" target="_blank" rel="external">request</a></p>
+</blockquote>
+<p><br></p>
+<h2 id="libusk有什么不足">libusk有什么不足</h2><blockquote>
+<p>曾经见一位仁兄抱怨，是不是他是第一个用这个库的人。。现在用下来，有时候也真有同感，不过好在库的开发者都很好，support都很nice。几轮回合下来（<a href="http://libusb.6.n5.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=334628），看着最新的release" target="_blank" rel="external">http://libusb.6.n5.nabble.com/template/NamlServlet.jtp?macro=user_nodes&amp;user=334628），看着最新的release</a> note里，好几个 reported by peter， 有那么点成就感（IT行业摸爬5年，终于为开源做点贡献），也有担心—蓝屏的问题还没有solution。将来。。。 Anyway, keep moving on.</p>
+</blockquote>
+<p><br></p>
+<h2 id="2005如何编译_libusbk">2005如何编译 libusbk</h2><blockquote>
+<p>在 <a href="http://sourceforge.net/projects/libusbk" target="_blank" rel="external">http://sourceforge.net/projects/libusbk</a> 下到最新的source， 在\src\lib下面有libusbK_lib.vcproj，修改Version=”8.00”， 然后build，应该会报告两个错， error code找不到，可以google标准的windows error code，直接用数字代替。重新编译，就能得到静态库了。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2014/08/01/2014-08-01-all things learned from UVC 1(libusb & libusbk)/" data-id="cihznhm530000akit7jilftad" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
@@ -422,7 +472,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode-c/">leetcode c++</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux-c/">linux c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets-c/">wxWidgets c++</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algothrim/">algothrim</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets/">wxWidgets</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -431,7 +481,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algothrim/">algothrim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qt/">qt</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algothrim/">algothrim</a><span class="tag-list-count">31</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qt/">qt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wxWidgets/">wxWidgets</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -440,7 +490,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/algothrim/" style="font-size: 10px;">algothrim</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/qt/" style="font-size: 10px;">qt</a>
+      <a href="/tags/algothrim/" style="font-size: 20px;">algothrim</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/qt/" style="font-size: 10px;">qt</a> <a href="/tags/wxWidgets/" style="font-size: 10px;">wxWidgets</a>
     </div>
   </div>
 
@@ -449,7 +499,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -469,15 +519,15 @@
           </li>
         
           <li>
-            <a href="/2015/12/10/Find-the-Duplicate-Number/">Find the Duplicate Number2</a>
+            <a href="/2015/12/10/Find-the-Duplicate-Number/">Find the Duplicate Number</a>
           </li>
         
           <li>
-            <a href="/2015/12/08/2015-12-8-LeetCode - First Bad Version/">leetcode -  First Bad Version</a>
+            <a href="/2015/12/09/Summary-Ranges/">Summary Ranges</a>
           </li>
         
           <li>
-            <a href="/2015/11/06/2015-11-6-coding test - split string by space/">leetcode -  split string by space.</a>
+            <a href="/2015/12/08/First-Bad-Version/">First Bad Version</a>
           </li>
         
       </ul>

@@ -1,10 +1,8 @@
----
-layout: post
-title: leetcode -  Word Pattern
+title: Word Pattern
 date:   2015-11-6 15:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
-
 
 
 
@@ -25,7 +23,7 @@ You may assume pattern contains only lowercase letters, and str contains lowerca
 
 
 ### code:
-<pre><code>
+```cplusplus
 
 class Solution {
   public:
@@ -66,4 +64,4 @@ class Solution {
         return true;
     }
 };
-</code></pre>
+```

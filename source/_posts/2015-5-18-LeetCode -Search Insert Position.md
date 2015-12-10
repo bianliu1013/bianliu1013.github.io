@@ -1,8 +1,7 @@
----
-layout: post
-title: leetcode - Search Insert Position!
+title:  Search Insert Position!
 date:   2015-05-18 11:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
 
 Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.

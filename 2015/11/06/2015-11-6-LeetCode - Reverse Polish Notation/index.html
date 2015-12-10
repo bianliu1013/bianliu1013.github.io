@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>leetcode -  Reverse Polish Notation. | Happy every day</title>
+  <title>Reverse Polish Notation. | Happy every day</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Evaluate the value of an arithmetic expression in Reverse Polish Notation.
 Valid operators are +, -, *, /. Each operand may be an integer or another expression.
 Some examples:
   [“2”, “1”, “+”, “3”, “">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode -  Reverse Polish Notation.">
+<meta property="og:title" content="Reverse Polish Notation.">
 <meta property="og:url" content="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Reverse Polish Notation/index.html">
 <meta property="og:site_name" content="Happy every day">
 <meta property="og:description" content="Evaluate the value of an arithmetic expression in Reverse Polish Notation.
 Valid operators are +, -, *, /. Each operand may be an integer or another expression.
 Some examples:
   [“2”, “1”, “+”, “3”, “">
-<meta property="og:updated_time" content="2015-11-05T12:26:43.970Z">
+<meta property="og:updated_time" content="2015-12-10T03:09:03.285Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode -  Reverse Polish Notation.">
+<meta name="twitter:title" content="Reverse Polish Notation.">
 <meta name="twitter:description" content="Evaluate the value of an arithmetic expression in Reverse Polish Notation.
 Valid operators are +, -, *, /. Each operand may be an integer or another expression.
 Some examples:
@@ -80,7 +80,7 @@ Some examples:
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/leetcode-c/">leetcode c++</a>
+    <a class="article-category-link" href="/categories/algothrim/">algothrim</a>
   </div>
 
   </div>
@@ -91,7 +91,7 @@ Some examples:
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode -  Reverse Polish Notation.
+      Reverse Polish Notation.
     </h1>
   
 
@@ -103,69 +103,26 @@ Some examples:
 <p>Valid operators are +, -, *, /. Each operand may be an integer or another expression.</p>
 <p>Some examples:</p>
 <p>  [“2”, “1”, “+”, “3”, “<em>“] -&gt; ((2 + 1) </em> 3) -&gt; 9<br>  [“4”, “13”, “5”, “/“, “+”] -&gt; (4 + (13 / 5)) -&gt; 6</p>
-<h3 id="code:">code:</h3><pre><code>
-class Solution
-{
-public:
-    int evalRPN(vector<string>& tokens) {
-        if(tokens.size() == 0)
-            return 0;
-
-        std::stack<int> stack;
-        for(auto i: tokens)
-        {
-
-            if(string::npos != i.find("+") && i.length() == 1){
-                int i_s = stack.top();
-                stack.pop();
-                int i_f = stack.top();
-                stack.pop();
-                stack.push(i_s + i_f);
-            }else if(string::npos != i.find("-") && i.length() == 1){
-                int i_s = stack.top();
-                stack.pop();
-                int i_f = stack.top();
-                stack.pop();
-                stack.push(i_f - i_s);
-            }else if(string::npos != i.find("*") && i.length() == 1){
-                int i_s = stack.top();
-                stack.pop();
-                int i_f = stack.top();
-                stack.pop();
-                stack.push(i_s * i_f);
-            }else if(string::npos != i.find("/") && i.length() == 1){
-                int i_s = stack.top();
-                stack.pop();
-                int i_f = stack.top();
-                stack.pop();
-                stack.push(i_f / i_s);
-            }
-            else{
-                stack.push(atoi(i.c_str()));
-            }
-        }
-
-        return stack.top();
-    }
-};
-</int></string></code></pre>
+<h3 id="code:">code:</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Solution&#10;&#123;&#10;public:&#10;    int evalRPN(vector&#60;string&#62;&#38; tokens) &#123;&#10;        if(tokens.size() == 0)&#10;            return 0;&#10;            &#10;        std::stack&#60;int&#62; stack;&#10;        for(auto i: tokens)&#10;        &#123;&#10;&#10;            if(string::npos != i.find(&#34;+&#34;) &#38;&#38; i.length() == 1)&#123;&#10;                int i_s = stack.top();&#10;                stack.pop();&#10;                int i_f = stack.top();&#10;                stack.pop();&#10;                stack.push(i_s + i_f);&#10;            &#125;else if(string::npos != i.find(&#34;-&#34;) &#38;&#38; i.length() == 1)&#123;&#10;                int i_s = stack.top();&#10;                stack.pop();&#10;                int i_f = stack.top();&#10;                stack.pop();&#10;                stack.push(i_f - i_s);&#10;            &#125;else if(string::npos != i.find(&#34;*&#34;) &#38;&#38; i.length() == 1)&#123;&#10;                int i_s = stack.top();&#10;                stack.pop();&#10;                int i_f = stack.top();&#10;                stack.pop();&#10;                stack.push(i_s * i_f);&#10;            &#125;else if(string::npos != i.find(&#34;/&#34;) &#38;&#38; i.length() == 1)&#123;&#10;                int i_s = stack.top();&#10;                stack.pop();&#10;                int i_f = stack.top();&#10;                stack.pop();&#10;                stack.push(i_f / i_s);&#10;            &#125;&#10;            else&#123;&#10;                stack.push(atoi(i.c_str()));&#10;            &#125;&#10;        &#125;&#10;&#10;        return stack.top();&#10;    &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
       <a data-url="http://yoursite.com/2015/11/06/2015-11-6-LeetCode - Reverse Polish Notation/" data-id="cihznhm8l0023akitxtax8odc" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algothrim/">algothrim</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2015/11/06/2015-11-6-LeetCode - Invert a binary tree/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/11/06/2015-11-6-LeetCode - Nim Game/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          leetcode -  Invert a binary tree.
+          Nim Game
         
       </div>
     </a>
@@ -173,7 +130,7 @@ public:
   
     <a href="/2015/11/06/2015-11-6-LeetCode - invalid parentheses/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">leetcode -  invalid parentheses</div>
+      <div class="article-nav-title">invalid parentheses</div>
     </a>
   
 </nav>
@@ -189,7 +146,7 @@ public:
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode-c/">leetcode c++</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux-c/">linux c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets-c/">wxWidgets c++</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algothrim/">algothrim</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets/">wxWidgets</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -198,7 +155,7 @@ public:
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algothrim/">algothrim</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qt/">qt</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algothrim/">algothrim</a><span class="tag-list-count">31</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qt/">qt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wxWidgets/">wxWidgets</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -207,7 +164,7 @@ public:
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/algothrim/" style="font-size: 10px;">algothrim</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/qt/" style="font-size: 10px;">qt</a>
+      <a href="/tags/algothrim/" style="font-size: 20px;">algothrim</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/qt/" style="font-size: 10px;">qt</a> <a href="/tags/wxWidgets/" style="font-size: 10px;">wxWidgets</a>
     </div>
   </div>
 
@@ -216,7 +173,7 @@ public:
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -236,15 +193,15 @@ public:
           </li>
         
           <li>
-            <a href="/2015/12/10/Find-the-Duplicate-Number/">Find the Duplicate Number2</a>
+            <a href="/2015/12/10/Find-the-Duplicate-Number/">Find the Duplicate Number</a>
           </li>
         
           <li>
-            <a href="/2015/12/08/2015-12-8-LeetCode - First Bad Version/">leetcode -  First Bad Version</a>
+            <a href="/2015/12/09/Summary-Ranges/">Summary Ranges</a>
           </li>
         
           <li>
-            <a href="/2015/11/06/2015-11-6-coding test - split string by space/">leetcode -  split string by space.</a>
+            <a href="/2015/12/08/First-Bad-Version/">First Bad Version</a>
           </li>
         
       </ul>

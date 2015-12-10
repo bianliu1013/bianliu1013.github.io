@@ -1,8 +1,7 @@
----
-layout: post
-title: leetcode -  Combinations!
+title:  Combinations!
 date:   2015-06-28 11:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
 
 

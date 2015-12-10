@@ -1,8 +1,7 @@
----
-layout: post
-title: leetcode - Maximum Depth of Binary Tree!
+title: Maximum Depth of Binary Tree!
 date:   2015-05-17 11:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
 
 Given a binary tree, find its maximum depth.

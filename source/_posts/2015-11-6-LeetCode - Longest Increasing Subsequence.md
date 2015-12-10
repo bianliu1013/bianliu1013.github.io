@@ -1,9 +1,9 @@
----
-layout: post
-title: leetcode -  longest increasing subsequence
+title:  longest increasing subsequence
 date:   2015-11-6 11:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
+
 
 Given an unsorted array of integers, find the length of longest increasing subsequence.
 
@@ -16,7 +16,7 @@ Your algorithm should run in O(n2) complexity.
 Follow up: Could you improve it to O(n log n) time complexity? 
 
 ### code:
-<pre><code>
+```cplusplus
 class Solution {
   public:
     int lengthOfLIS(vector<int>& nums) {
@@ -44,4 +44,4 @@ class Solution {
         return max_length;
     }
 };
-</code></pre>
+```

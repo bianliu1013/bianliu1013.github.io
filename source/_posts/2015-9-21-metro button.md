@@ -1,8 +1,7 @@
----
-layout: post
-title: leetcode -  An Metro sytle button build with wxWidgets!
+title:  An Metro sytle button build with wxWidgets!
 date:   2015-09-21 11:23:32
-categories: wxWidgets c++
+categories: wxWidgets
+tags: wxWidgets
 ---
 
 # An Metro sytle button build with wxwidget

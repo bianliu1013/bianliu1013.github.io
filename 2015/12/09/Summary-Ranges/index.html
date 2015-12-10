@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Summary Ranges | Happy every day</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Given a sorted integer array without duplicates, return the summary of its ranges.
+For example, given [0,1,2,4,5,7], return [“0-&amp;gt;2”,”4-&amp;gt;5”,”7”]. 
+code:1class Solution &amp;#123;&amp;#10;public:&amp;#10;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Summary Ranges">
+<meta property="og:url" content="http://yoursite.com/2015/12/09/Summary-Ranges/index.html">
+<meta property="og:site_name" content="Happy every day">
+<meta property="og:description" content="Given a sorted integer array without duplicates, return the summary of its ranges.
+For example, given [0,1,2,4,5,7], return [“0-&amp;gt;2”,”4-&amp;gt;5”,”7”]. 
+code:1class Solution &amp;#123;&amp;#10;public:&amp;#10;">
+<meta property="og:updated_time" content="2015-12-10T03:02:01.509Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Summary Ranges">
+<meta name="twitter:description" content="Given a sorted integer array without duplicates, return the summary of its ranges.
+For example, given [0,1,2,4,5,7], return [“0-&amp;gt;2”,”4-&amp;gt;5”,”7”]. 
+code:1class Solution &amp;#123;&amp;#10;public:&amp;#10;">
+  
+    <link rel="alternative" href="/atom.xml" title="Happy every day" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Happy every day</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/project">Projects</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Summary-Ranges" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/09/Summary-Ranges/" class="article-date">
+  <time datetime="2015-12-09T03:23:32.000Z" itemprop="datePublished">2015-12-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algothrim/">algothrim</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Summary Ranges
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> Given a sorted integer array without duplicates, return the summary of its ranges.</p>
+<p>For example, given [0,1,2,4,5,7], return [“0-&gt;2”,”4-&gt;5”,”7”]. </p>
+<h3 id="code:">code:</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;&#10;public:&#10;    vector&#60;string&#62; summaryRanges(vector&#60;int&#62;&#38; nums) &#123;&#10;         int begin = 0;&#10;         int end = 0;&#10;&#10;         vector&#60;string&#62; v;&#10;&#10;         if(nums.size() == 0)&#123;&#10;             return v;&#10;         &#125;&#10;&#10;         for(end = 0; end &#60; nums.size(); ++end)&#10;         &#123;&#10;             if(end == begin)&#123;&#10;             &#125;&#10;            else if(nums[end] == nums[end - 1] + 1)&#123;&#10;                //end++;&#10;            &#125;&#10;            else&#123;&#10;                ostringstream os;&#10;                if(begin == end - 1)&#10;                   os &#60;&#60; nums[begin];&#10;                else&#10;                   os &#60;&#60; nums[begin] &#60;&#60; &#34;-&#62;&#34; &#60;&#60; nums[end - 1];&#10;                v.push_back(os.str());&#10;                begin = end;&#10;            &#125;&#10;         &#125;&#10;&#10;         ostringstream os;&#10;         if(begin == end - 1)&#10;            os &#60;&#60; nums[begin];&#10;         else&#10;            os &#60;&#60; nums[begin] &#60;&#60; &#34;-&#62;&#34; &#60;&#60; nums[end - 1];&#10;&#10;         v.push_back(os.str());&#10;&#10;         return v;&#10;    &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/12/09/Summary-Ranges/" data-id="cihznve1i00052oitv38y9kk6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algothrim/">algothrim</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/12/10/Find-the-Duplicate-Number/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Find the Duplicate Number
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/12/08/First-Bad-Version/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">First Bad Version</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algothrim/">algothrim</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/boost-c/">boost c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uvc-c/">uvc c++</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wxWidgets/">wxWidgets</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algothrim/">algothrim</a><span class="tag-list-count">31</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c++</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/opencv/">opencv</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/qt/">qt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wxWidgets/">wxWidgets</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algothrim/" style="font-size: 20px;">algothrim</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/opencv/" style="font-size: 10px;">opencv</a> <a href="/tags/qt/" style="font-size: 10px;">qt</a> <a href="/tags/wxWidgets/" style="font-size: 10px;">wxWidgets</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">September 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">January 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015/12/10/Move-Zeroes/">Move Zeroes</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/10/Ugly-Number/">Ugly Number</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/10/Find-the-Duplicate-Number/">Find the Duplicate Number</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/09/Summary-Ranges/">Summary Ranges</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/08/First-Bad-Version/">First Bad Version</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Wang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/project" class="mobile-nav-link">Projects</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

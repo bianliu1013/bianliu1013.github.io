@@ -1,6 +1,7 @@
-title: Find the Duplicate Number2
+title: Find the Duplicate Number
 date: 2015-12-10 10:39:05
-tags: leetcode
+categories: algothrim
+tags: algothrim
 ---
 
  Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.

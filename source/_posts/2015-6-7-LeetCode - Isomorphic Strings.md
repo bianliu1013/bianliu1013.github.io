@@ -1,8 +1,7 @@
----
-layout: post
-title: leetcode -  Isomorphic Strings!
+title:  Isomorphic Strings!
 date:   2015-06-07 11:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
 
 

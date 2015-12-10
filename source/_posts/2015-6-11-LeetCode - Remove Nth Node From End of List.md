@@ -2,7 +2,8 @@
 layout: post
 title: leetcode -  Remove Nth Node From End of List!
 date:   2015-06-11 11:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
 
 

@@ -1,8 +1,7 @@
----
-layout: post
-title: leetcode -  split string by space.
+title: split string by space.
 date:   2015-11-6 15:23:32
-categories: leetcode c++
+categories: algothrim
+tags: algothrim
 ---
 
 
@@ -10,7 +9,7 @@ didn't do well in coding test this morning. write below string utility. go fight
 
 
 ### code:
-<pre><code>
+```cplusplus
 #include <string>
 #include <sstream>
 #include <iostream>
@@ -46,4 +45,4 @@ void splict_string(std::string input, std::vector<std::string>& v)
         /* code */
     }
 }
-</code></pre>
+```
